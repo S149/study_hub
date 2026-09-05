@@ -1,0 +1,172 @@
+<div class="view" id="view-ta5" hidden>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#"><span class="mark" aria-hidden="true">✦</span> ISTQB Study Hub</a>
+    <nav class="jumpnav" aria-label="Sections in this chapter">
+      <a href="#tta5-1">Prevention Practices</a>
+<a href="#tta5-2">Phase Containment</a>
+<a href="#tta5-3">Mitigating Recurrence</a>
+    </nav>
+  </div>
+</header>
+<main id="main-ta5" tabindex="-1">
+  <section class="hero">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span aria-hidden="true">🛡️</span> CTAL-TA · Chapter 5</p>
+    <h1>Software Defect Prevention</h1>
+    <p class="lede">Defect prevention reduces the likelihood that defects (re)occur in work products and keeps defects from propagating to later phases of the SDLC &mdash; lowering cost and labor while raising productivity and product quality. It is a whole-team responsibility, and the test analyst (TA) contributes with domain knowledge, test expertise, and analytical skill: helping stop defects from being introduced, helping contain defects that do occur within the phase where they arose, and helping stop defects from recurring.</p>
+    <ul class="keywords" aria-label="Key terms in this chapter">
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-1">ad hoc reviewing<span class="kw-pop" id="kwtip-ta5-1" role="tooltip"><span class="kw-line">A review technique carried out informally, without a structured process; reviewers get little or no guidance and document anomalies as they find them.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-2">checklist-based reviewing<span class="kw-pop" id="kwtip-ta5-2" role="tooltip"><span class="kw-line">A review technique that evaluates the test basis against a predefined checklist, tailored to test basis type, risk level, or test condition, and kept current.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-3">defect prevention<span class="kw-pop" id="kwtip-ta5-3" role="tooltip"><span class="kw-line">Implementing actions that reduce the likelihood of (re)occurrence of defects in work products and mitigate their propagation to later SDLC phases.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-4">model-based testing<span class="kw-pop" id="kwtip-ta5-4" role="tooltip"><span class="kw-line">A test approach in which a tool designs and generates test cases and other testware from an MBT model and TA-defined test selection criteria.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-5">perspective-based reading<span class="kw-pop" id="kwtip-ta5-5" role="tooltip"><span class="kw-line">A review technique that reviews the test basis from various viewpoints (e.g. designer, tester, marketer) and has reviewers try to generate the work product they would derive from it.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-6">review technique<span class="kw-pop" id="kwtip-ta5-6" role="tooltip"><span class="kw-line">A method the TA applies during individual review to identify defects in the test basis, selected according to reviewing goals, resources, test basis type, risk, and culture.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-7">role-based reviewing<span class="kw-pop" id="kwtip-ta5-7" role="tooltip"><span class="kw-line">A review technique that assigns specific roles or personas to reviewers so each focuses on a distinct aspect of the test basis, covering it comprehensively without duplication.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-8">root cause analysis<span class="kw-pop" id="kwtip-ta5-8" role="tooltip"><span class="kw-line">A technique for identifying and addressing the underlying causes of a defect, not just its symptoms, to prevent the defect from recurring.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-9">scenario-based reviewing<span class="kw-pop" id="kwtip-ta5-9" role="tooltip"><span class="kw-line">A review technique that simulates a process or activity, such as a use case dry run, to identify anomalies and refine the test basis.</span></span></li>
+<li class="kw-chip" tabindex="0" aria-describedby="kwtip-ta5-10">test result<span class="kw-pop" id="kwtip-ta5-10" role="tooltip"><span class="kw-line">The outcome of test execution (e.g. tests passed/failed); the TA analyzes test results, defect reports, and structural metrics to improve defect detection effectiveness.</span></span></li>
+    </ul>
+  </section>
+
+  <section class="topic" id="tta5-1" aria-labelledby="hta5-1">
+    <p class="subhead">5.1</p>
+    <h2 id="hta5-1">Defect Prevention Practices <span class="pill">K2</span></h2>
+    <p>Defect prevention practices fall into three groups: preventing defect introduction (part of quality assurance activities), preventing defects from escaping to later SDLC phases (section 5.2), and preventing defects from recurring (section 5.3). Defect prevention is a whole-team responsibility, but the TA contributes using domain knowledge, test expertise, and analytical skills.</p>
+    <div class="card-grid cols-2">
+      <div class="card"><h4>Participating in risk analysis</h4><p>Ensures identified risks are properly mitigated &mdash; for example, by selecting the most adequate test techniques.</p></div>
+      <div class="card"><h4>Reviewing requirements, models, and specifications</h4><p>Allows early detection of defects in the test basis, preventing them from escaping into the code and significantly reducing the cost of fixing them.</p></div>
+      <div class="card"><h4>Participating in retrospectives</h4><p>Identifies potential improvements in test analysis, design, implementation, and execution &mdash; e.g. more effective techniques, targeting risk areas, or better test data and environments to reduce false-positive and false-negative results.</p></div>
+      <div class="card"><h4>Defect data collection and evaluation</h4><p>Collects detailed defect data to enable classification and statistical analysis, supporting root cause analysis and process improvement.</p></div>
+      <div class="card"><h4>Participating in root cause analysis</h4><p>Proposes corrective actions that address identified root causes, preventing defects from reoccurring.</p></div>
+    </div>
+    <p>The TA also assesses &mdash; usually together with the test manager &mdash; whether the measures taken have had the desired effect. Three metrics help evaluate that effectiveness:</p>
+    <div class="table-wrap">
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">Metric</th><th scope="col">What it measures</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Defect removal efficiency (DRE)</th><td>The ratio of defects removed before release to the total number of defects (an unknown denominator, often estimated or replaced by defects found up to a set point after release, e.g. 6 months). A high DRE suggests fewer defects escape to production, implying better prevention practices &mdash; but it does not distinguish defects caught by prevention from those caught by detection.</td></tr>
+          <tr><th scope="row">Phase containment effectiveness (PCE)</th><td>The number of defects introduced and removed within the same SDLC phase, relative to the total number of defects introduced in that phase. A high PCE means fewer defects escape to later phases.</td></tr>
+          <tr><th scope="row">Cost of quality</th><td>Illustrates the relationship between defect prevention, defect detection, and defect removal costs.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic" id="tta5-2" aria-labelledby="hta5-2">
+    <p class="subhead">5.2</p>
+    <h2 id="hta5-2">Supporting Phase Containment</h2>
+    <p><strong>Phase containment</strong> aims to detect and remove defects in the same SDLC phase in which they were introduced &mdash; in Agile, the shift left approach serves a similar purpose. This policy reduces the cost of quality. Because the test basis is a key input to test analysis and test design, the TA best contributes to phase containment by evaluating test basis quality: early attention here minimizes later effort and prevents defects from propagating forward. Two options let the TA find defects in the test basis: modeling for testing purposes, and reviewing the test basis with various review techniques.</p>
+
+    <h3 id="hta5-2-1">5.2.1 Using Models to Detect Defects <span class="pill">K3</span></h3>
+    <p><strong>Modeling</strong> provides abstractions of a system at a chosen level of precision and detail, helping stakeholders better understand the system being developed. It supports phase containment in three ways:</p>
+    <div class="flowchain" role="img" aria-label="Three ways modeling supports phase containment: detecting defects in specifications, detecting defects in models themselves, and detecting defects in the test object via model-based testing.">
+      <div class="step"><span class="n">01</span><strong>Detecting defects in specifications</strong><span class="d">Formalizing informal text as a model reveals incompleteness, inconsistency, or ambiguity.</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><span class="n">02</span><strong>Detecting defects in models</strong><span class="d">Where the test basis already contains models, the TA analyzes them directly for defects.</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><span class="n">03</span><strong>Detecting defects via model-based testing</strong><span class="d">An MBT tool generates test cases from a model and TA-defined selection criteria, exposing anomalies through systematic exploration.</span></div>
+    </div>
+
+    <p><strong>Detecting defects in specifications.</strong> Specifications are often informally written text. The TA can formally represent them using models, mapping and linking test conditions (e.g. requirements) to model elements for traceability. Formalizing and visualizing the test conditions efficiently reveals defects such as incompleteness, inconsistencies, or ambiguities. Modeling's strength is that it transforms the specification, whereas reviews check it in its original form &mdash; so modeling also helps the TA find appropriate solutions for the defects it detects. The type of model shapes what kinds of defects surface:</p>
+    <div class="table-wrap">
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">Model type</th><th scope="col">Examples</th><th scope="col">Typical defects detected</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Data-based models</th><td>Domain models, combinatorial testing models</td><td>Overlapping partitions, gaps in domain coverage, empty partitions, missing or incorrect parameter combinations.</td></tr>
+          <tr><th scope="row">Behavior-based models</th><td>CRUD matrices, state-based models, scenario models</td><td>Incomplete or inconsistent entity lifecycles, missing or faulty state transitions, deadlocks, endless loops, ambiguous or inconsistent behavior, missing exception handling.</td></tr>
+          <tr><th scope="row">Rule-based models</th><td>Decision tables, metamorphic relations</td><td>Omissions, inconsistencies, ambiguities, redundancies, error-prone scenarios, and overly complex business logic in business rules.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <p>Modeling can also detect inconsistencies in naming, data values (e.g. boundaries), and inputs or outputs, and can identify missing, incomplete, ambiguous, or unnecessary information.</p>
+
+    <p><strong>Detecting defects in models.</strong> If the test basis already contains models, the TA analyzes them for defects specific to that model type:</p>
+    <div class="table-wrap">
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">Model</th><th scope="col">Typical defects</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">State transition diagrams</th><td>Missing or wrong states, improper transitions, incorrect guard conditions or actions, redundant or unreachable states, nondeterministic behavior.</td></tr>
+          <tr><th scope="row">Activity diagrams</th><td>Missing, unreachable, or dead-end actions, incorrect order of actions, wrong, non-exclusive, or incomplete guard conditions in decision nodes, missing synchronization points, or improperly synchronized parallel flows leading to unintended behavior.</td></tr>
+          <tr><th scope="row">Decision tables</th><td>Overlapping, inconsistent, or infeasible rules; incompleteness such as missing condition combinations or missing actions for a given combination.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <p>All models can also contain syntax errors, typos, duplicates, and inconsistent naming of model elements.</p>
+
+    <div class="callout"><span class="label">Example</span><p><strong>Model-based testing (MBT)</strong> generates test cases and other test design testware from an MBT model and test selection criteria the TA defines. MBT is effective at finding specification anomalies because it allows comprehensive coverage and systematic exploration of expected behavior according to the model. Graphical MBT models also foster communication with stakeholders, building a shared understanding of the test basis.</p></div>
+
+    <h3 id="hta5-2-2">5.2.2 Applying Review Techniques <span class="pill">K3</span></h3>
+    <p>A well-defined test basis is the cornerstone of work product quality and project success. Reviewing the test basis identifies and addresses defects early, preventing them from escaping to later phases. The TA can apply various review techniques during individual review; the best choice depends on reviewing goals, project objectives, available resources, test basis type, associated risks, business domain, and company culture.</p>
+    <div class="card-grid cols-2">
+      <div class="card"><h4>Ad hoc reviewing</h4><p>Carried out informally, without a structured process; reviewers get little or no guidance and document anomalies as they encounter them while reading. Needs little preparation but is highly dependent on reviewer skill, and left unmanaged can produce a high volume of duplicate anomaly reports from multiple reviewers.</p></div>
+      <div class="card"><h4>Checklist-based reviewing</h4><p>Evaluates the test basis against a predefined checklist, which reminds reviewers of specific points and de-personalizes the review. Checklists can be generic or specific to quality characteristics, test objectives, or test basis type; the TA tailors them to focus the review, keeps them updated with previously missed defects, and is not limited to the listed items.</p></div>
+      <div class="card"><h4>Scenario-based reviewing</h4><p>Simulates a process or activity to identify anomalies and refine the test basis. Most effective when the test basis is scenario-based (e.g. a use case or activity diagram), letting reviewers perform &ldquo;dry runs&rdquo; based on expected usage; reviewers are not limited to documented scenarios and should think beyond them.</p></div>
+      <div class="card"><h4>Role-based reviewing</h4><p>Assigns specific roles or responsibilities to reviewers, typically based on end-user types (experienced, inexperienced, senior, child) or organizational roles (administrator, regular user), each describable as a persona. Distributing responsibility by role gives comprehensive coverage while avoiding duplicated anomalies.</p></div>
+      <div class="card"><h4>Perspective-based reading</h4><p>Reviews the test basis from various viewpoints (designer, tester, marketer, administrator, end user), producing more in-depth individual review with less duplication among reviewers. Reviewers also attempt to generate the work product they would derive from the test basis &mdash; e.g. a tester drafting acceptance tests from requirements to check all needed information is present.</p></div>
+    </div>
+  </section>
+
+  <section class="topic" id="tta5-3" aria-labelledby="hta5-3">
+    <p class="subhead">5.3</p>
+    <h2 id="hta5-3">Mitigating the Recurrence of Defects</h2>
+    <p>The TA can proactively help minimize defect recurrence in two ways: analyzing test results to improve test analysis and test design, and supporting root cause analysis with defect classification.</p>
+
+    <h3 id="hta5-3-1">5.3.1 Analyzing Test Results to Improve Defect Detection <span class="pill">K4</span></h3>
+    <p>Test results let the TA identify failures, and they also give feedback the TA can use to improve defect detection effectiveness.</p>
+    <div class="card-grid cols-2">
+      <div class="card"><h4>Predicted vs. actual defect cluster analysis</h4><p>Most defects usually cluster in a few components. After testing, the TA compares predicted defect clusters against actual ones; where more defects appear than expected, more rigorous testing may be applied there. Measurable criteria (e.g. defect density, defect severity) keep clusters clear and consistent &mdash; small clusters of critical or major defects usually matter more than larger clusters of minor or cosmetic ones.</p></div>
+      <div class="card"><h4>Defect detection percentage (DDP) analysis</h4><p>One of the most important test effectiveness measures for a test level; escaped defects counted should be limited to ones that level could have detected, with clear temporal limits and exclusion criteria for consistency. A low DDP signals ineffective defect detection, prompting the TA to analyze causes and propose improvements; DDP is best broken down by severity, since escaped-defect priority usually depends on it.</p></div>
+      <div class="card"><h4>Structural coverage analysis</h4><p>Assesses how thoroughly tests have exercised specific areas of the test object (e.g. statement, branch, or neuron coverage, usually tool-measured). Identifying low-coverage areas lets the TA target additional test effort there to discover previously escaped defects, weighing risk level when choosing where to add coverage.</p></div>
+      <div class="card"><h4>Test gap analysis</h4><p>Assesses how thoroughly tests have exercised recent code changes, letting the TA focus effort on especially error-prone areas &mdash; new, untested changes &mdash; rather than all low-coverage areas, including code unchanged and already tested for prior releases.</p></div>
+      <div class="card"><h4>Defect arrival pattern analysis</h4><p>Compares the number or density of defects found across successive project phases (e.g. iterations) against theoretical distribution patterns, revealing the strength of existing test cases and room for improvement.</p></div>
+    </div>
+    <div class="callout"><span class="label">Example</span><p>A classic defect arrival pattern is the <strong>Rayleigh model</strong>: a single peak skewed to the right, where the expected number of defects found rises over time, peaks, then drops slowly toward zero. If defect detection stays flat and low when the pattern suggests it should be rising, the existing tests may be too weak to detect additional defects.</p></div>
+    <p>These analyses rely on defect-related metrics &mdash; number of defects, DDP, and others &mdash; calculated from test results (e.g. tests passed/failed), defect reports, and structural metrics (e.g. code coverage, defect density). But these metrics are not always as straightforward to read as they seem: the number of failed tests is not necessarily the number of defects detected, since the relation between test results and defects can be many-to-many &mdash; several tests may detect the same defect, or one test may detect several defects. The severity of a defect may also differ from the criticality of the test that found it, as a critical test case can fail because of a cosmetic defect. Calculating the actual number of defects detected requires carefully analyzing the results of the debugging process.</p>
+
+    <h3 id="hta5-3-2">5.3.2 Supporting Root Cause Analysis with Defect Classification <span class="pill">K2</span></h3>
+    <p><strong>Root cause analysis (RCA)</strong> identifies and addresses the underlying causes of a defect rather than only its symptoms. It supports a structured approach to quality improvement, with preventing defect recurrence as its primary objective. The TA uses various techniques to identify root causes of defects and failures &mdash; for example, defect taxonomies, the five whys technique, cause-effect diagrams, and Pareto analysis.</p>
+    <p>Classical RCA has subject matter experts study a resolved defect in considerable detail. But with many defects to analyze, planning preventive action for each one individually is inefficient and time-consuming. <strong>Defect classification</strong> addresses this: classifying defects first, then performing RCA on the defect types that occur, rather than on every individual defect.</p>
+    <p>Defect classification rests on the recognition that individual defects capture a great deal of information about the development process and the system under test. It lets the TA extract that information and turn it into a process measurement, giving insight into the types of errors made during development &mdash; useful for process improvement. Classification bridges quantitative defect statistics and qualitative RCA. To effectively support RCA, defects should be classified uniformly across the entire SDLC, from early testing through production. The TA should also support the organization in standardizing defect classification, improving communication and information exchange about defects among developers and organizations, and thereby facilitating RCA.</p>
+    <div class="card-grid cols-2">
+      <div class="card"><h4>Orthogonal defect classification (ODC)</h4><p>Classifies each defect into orthogonal &mdash; mutually exclusive &mdash; attributes, collected both when a defect is reported and when it is fixed.</p></div>
+      <div class="card"><h4>IEEE 1044</h4><p>A standard classification for software anomalies, providing a core set of attributes for classifying failures and defects.</p></div>
+      <div class="card"><h4>Severity-based classification</h4><p>Classifies defects by severity &mdash; for example, critical, major, minor, trivial.</p></div>
+      <div class="card"><h4>Defect taxonomy models</h4><p>Structured taxonomies used as an alternative basis for classifying defects.</p></div>
+    </div>
+    <div class="callout"><span class="label">Note</span><p>Defects can also be mapped to quality attributes using software quality models such as <strong>ISO/IEC 25010</strong> or the <strong>FURPS</strong> model.</p></div>
+  </section>
+
+  <section class="recap" aria-labelledby="recap-heading-ta5">
+  <h2 id="recap-heading-ta5">Chapter 5 in one screen</h2>
+  <dl class="deflist">
+  <div><dt>Defect prevention</dt><dd>Reduces (re)occurrence of defects and their propagation to later SDLC phases; a whole-team responsibility the TA supports with domain knowledge and analytical skill.</dd></div>
+  <div><dt>TA prevention contributions</dt><dd>Risk analysis, reviewing the test basis, retrospectives, defect data collection and evaluation, and participating in root cause analysis.</dd></div>
+  <div><dt>DRE / PCE / cost of quality</dt><dd>DRE = share of defects removed before release; PCE = share of defects contained in the phase they were introduced; cost of quality relates prevention, detection, and removal costs.</dd></div>
+  <div><dt>Phase containment</dt><dd>Detecting and removing defects in the same SDLC phase they were introduced in; the TA contributes chiefly by evaluating test basis quality.</dd></div>
+  <div><dt>Modeling for phase containment</dt><dd>Detects defects in specifications, in models themselves, and in the test object via model-based testing.</dd></div>
+  <div><dt>Data / behavior / rule-based models</dt><dd>Reveal domain defects, entity-lifecycle and state-transition defects, and business-rule defects respectively.</dd></div>
+  <div><dt>Model-based testing (MBT)</dt><dd>A tool generates tests from an MBT model and TA-set selection criteria, enabling comprehensive, systematic anomaly detection.</dd></div>
+  <div><dt>Ad hoc reviewing</dt><dd>Informal, unguided review; fast to start but skill-dependent and prone to duplicate anomaly reports.</dd></div>
+  <div><dt>Checklist-based reviewing</dt><dd>Evaluates the test basis against a tailored, regularly updated checklist &mdash; not exhaustive on its own.</dd></div>
+  <div><dt>Scenario-based reviewing</dt><dd>Dry-runs a scenario-format test basis (use cases, activity diagrams) to surface anomalies.</dd></div>
+  <div><dt>Role-based reviewing</dt><dd>Assigns reviewer personas by user or organizational role for comprehensive, non-duplicated coverage.</dd></div>
+  <div><dt>Perspective-based reading</dt><dd>Reviews from multiple viewpoints, each trying to derive its own work product from the test basis.</dd></div>
+  <div><dt>Test result analysis techniques</dt><dd>Defect cluster analysis, DDP analysis, structural coverage analysis, test gap analysis, and defect arrival pattern analysis (e.g. the Rayleigh model).</dd></div>
+  <div><dt>Root cause analysis (RCA)</dt><dd>Targets underlying causes, not symptoms, to prevent defect recurrence; supported by defect taxonomies, five whys, cause-effect diagrams, Pareto analysis.</dd></div>
+  <div><dt>Classify-then-RCA</dt><dd>Classifying defects before RCA avoids the inefficiency of individually analyzing every single defect.</dd></div>
+  <div><dt>Defect classification methods</dt><dd>ODC, IEEE 1044, severity-based classification, and defect taxonomy models; defects can also map to quality models like ISO/IEC 25010 or FURPS.</dd></div>
+  </dl>
+  </section>
+</main>
+<footer class="pagefoot">
+  <span class="step"></span>
+  <span class="step">Chapter 5 of 5 · CTAL-TA</span>
+  <span class="step"></span>
+</footer>
+</div>
