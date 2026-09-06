@@ -891,6 +891,76 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 @media (prefers-reduced-motion: reduce) {
   .stat-pop { transition: none; }
 }
+/* -- WCAG reference page -- */
+#view-wcag .wcag-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 0.75rem 0;
+  z-index: 5;
+  border-bottom: 1px solid var(--line);
+}
+#view-wcag .wcag-controls .grp { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+#view-wcag .wcag-filter {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  min-height: 44px;
+  min-width: 44px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 1px solid var(--ink-muted);
+  background: var(--surface);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+#view-wcag .wcag-filter:hover { border-color: var(--accent); color: var(--ink); }
+#view-wcag .wcag-filter.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+#view-wcag .wcag-controls .sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 0.35rem; }
+#view-wcag .wcag-controls .count { margin-left: auto; font-size: 0.8rem; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+#view-wcag :is(a, button):focus-visible { scroll-margin-top: 4.5rem; }
+
+#view-wcag .wcag-principle { margin-bottom: 2.25rem; }
+#view-wcag .wcag-principle-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line-strong);
+}
+#view-wcag .wcag-principle-head .num { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-muted); }
+#view-wcag .wcag-principle-head h2 { font-size: 1.15rem; margin: 0; }
+#view-wcag .wcag-principle-head .desc { flex-basis: 100%; font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-muted); text-align: left; }
+
+#view-wcag .wcag-tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); background: var(--surface); }
+#view-wcag table.wcag-table { width: 100%; border-collapse: collapse; min-width: 820px; }
+#view-wcag table.wcag-table thead th {
+  text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted); font-weight: 600; background: var(--surface-2);
+  padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--line-strong);
+}
+#view-wcag table.wcag-table tbody tr { border-bottom: 1px solid var(--line); }
+#view-wcag table.wcag-table tbody tr:last-child { border-bottom: none; }
+#view-wcag table.wcag-table tbody tr:hover { background: var(--hover-bg); }
+#view-wcag table.wcag-table tbody tr.wcag-hide { display: none; }
+#view-wcag table.wcag-table td { padding: 0.65rem 0.9rem; vertical-align: top; }
+#view-wcag td.wcag-sc { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-muted); white-space: nowrap; width: 1%; }
+#view-wcag td.wcag-name { width: 16%; min-width: 140px; }
+#view-wcag td.wcag-name .n { font-weight: 600; color: var(--ink); }
+#view-wcag td.wcag-name .guideline { display: block; font-size: 0.72rem; color: var(--ink-muted); margin-top: 0.15rem; }
+#view-wcag td.wcag-covers, #view-wcag td.wcag-reqs { color: var(--ink-muted); }
+#view-wcag td.wcag-level { width: 1%; text-align: center; }
+
+#view-wcag .wcag-pill {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+  padding: 0.18rem 0.5rem; border-radius: 5px; border: 1px solid transparent; white-space: nowrap;
+}
+#view-wcag .wcag-pill.A { background: var(--surface-2); color: var(--ink-muted); border-color: var(--line-strong); }
+#view-wcag .wcag-pill.AA { background: var(--surface-2); color: var(--ink-important); border-color: var(--line-strong); }
+#view-wcag .wcag-pill.AAA { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 </head>
@@ -1312,6 +1382,15 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <span class="synchoice-body">
             <span class="synchoice-title">CT-GenAI &mdash; Testing with Generative AI</span>
             <span class="synchoice-desc">The Specialist Level syllabus: GenAI foundations, prompt engineering, managing GenAI risk, LLM-powered test infrastructure, and organizational rollout. 5 chapters.</span>
+          </span>
+          <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+      <li class="synchoice" style="--card-accent-light:#3D3D3D; --card-accent-dark:#B8B8B8;">
+        <a href="#wcag">
+          <span class="synchoice-body">
+            <span class="synchoice-title">WCAG &mdash; Accessibility Reference</span>
+            <span class="synchoice-desc">A quick-reference table of the 86 current WCAG 2.2 success criteria (plus the retired 4.1.1), filterable by principle and conformance level (A, AA, AAA).</span>
           </span>
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
@@ -5022,13 +5101,209 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 </footer>
 </div>
 
+<div class="view" id="view-wcag" hidden>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#"><span class="mark" aria-hidden="true">&#10022;</span> Study Hub</a>
+  </div>
+</header>
+<main id="main-wcag" tabindex="-1">
+  <section class="hero" style="border-bottom:none;">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr;&nbsp;All syllabi</a></p>
+    <h1>WCAG &mdash; Accessibility Reference</h1>
+    <p class="lede">The 86 current WCAG 2.2 success criteria (plus the retired 4.1.1, kept for reference) across the four principles &mdash; Perceivable, Operable, Understandable, Robust &mdash; with what each one governs and what it takes to pass it, at levels A, AA and AAA.</p>
+    <div class="stats" role="group" aria-label="Criteria totals">
+      <div class="stat"><div class="val">4</div><div class="lbl">Principles</div></div>
+      <div class="stat"><div class="val" id="wcag-count-a">0</div><div class="lbl">Level A</div></div>
+      <div class="stat"><div class="val" id="wcag-count-aa">0</div><div class="lbl">Level AA</div></div>
+      <div class="stat"><div class="val" id="wcag-count-aaa">0</div><div class="lbl">Level AAA</div></div>
+    </div>
+  </section>
+
+  <div class="wcag-controls">
+    <div class="grp" role="group" aria-label="Filter by conformance level">
+      <button class="wcag-filter active" data-level="all" type="button" aria-pressed="true">All levels</button>
+      <button class="wcag-filter" data-level="A" type="button" aria-pressed="false">A</button>
+      <button class="wcag-filter" data-level="AA" type="button" aria-pressed="false">AA</button>
+      <button class="wcag-filter" data-level="AAA" type="button" aria-pressed="false">AAA</button>
+    </div>
+    <div class="sep"></div>
+    <div class="grp" role="group" aria-label="Filter by principle">
+      <button class="wcag-filter active" data-principle="all" type="button" aria-pressed="true">All principles</button>
+      <button class="wcag-filter" data-principle="1" type="button" aria-pressed="false">Perceivable</button>
+      <button class="wcag-filter" data-principle="2" type="button" aria-pressed="false">Operable</button>
+      <button class="wcag-filter" data-principle="3" type="button" aria-pressed="false">Understandable</button>
+      <button class="wcag-filter" data-principle="4" type="button" aria-pressed="false">Robust</button>
+    </div>
+    <div class="count" id="wcag-shown-status" role="status" aria-live="polite"><span id="wcag-shown-count">87</span> of 87 shown</div>
+  </div>
+
+  <section class="wcag-principle" data-p="1" aria-label="Perceivable">
+    <div class="wcag-principle-head">
+      <span class="num">1</span>
+      <h2>Perceivable</h2>
+      <span class="desc">Information and UI components must be presentable to users in ways they can perceive.</span>
+    </div>
+    <div class="wcag-tablewrap">
+      <table class="wcag-table">
+        <caption class="sr-only">Perceivable success criteria</caption>
+        <thead><tr><th>SC</th><th>Criterion</th><th>Level</th><th>What it covers</th><th>Requirement to pass</th></tr></thead>
+        <tbody>
+          <tr><td class="wcag-sc">1.1.1</td><td class="wcag-name"><span class="n">Non-text Content</span><span class="guideline">1.1 Text Alternatives</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Images, icons, charts and other non-text content.</td><td class="wcag-reqs">Every non-text element has a text alternative serving the same purpose (alt text, or marked decorative if purely ornamental).</td></tr>
+          <tr><td class="wcag-sc">1.2.1</td><td class="wcag-name"><span class="n">Audio-only and Video-only (Prerecorded)</span><span class="guideline">1.2 Time-based Media</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Prerecorded audio-only or video-only media.</td><td class="wcag-reqs">Provide a transcript (audio-only) or a transcript/audio description (video-only).</td></tr>
+          <tr><td class="wcag-sc">1.2.2</td><td class="wcag-name"><span class="n">Captions (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Prerecorded synchronized video with audio.</td><td class="wcag-reqs">Captions are provided for all spoken dialogue and relevant sound.</td></tr>
+          <tr><td class="wcag-sc">1.2.3</td><td class="wcag-name"><span class="n">Audio Description or Media Alternative (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Prerecorded video content conveying info visually.</td><td class="wcag-reqs">An audio description or full text alternative describes the visual content.</td></tr>
+          <tr><td class="wcag-sc">1.2.4</td><td class="wcag-name"><span class="n">Captions (Live)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Live synchronized media.</td><td class="wcag-reqs">Real-time captions accompany live audio content.</td></tr>
+          <tr><td class="wcag-sc">1.2.5</td><td class="wcag-name"><span class="n">Audio Description (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Prerecorded video.</td><td class="wcag-reqs">Audio description is provided for all visual-only information (beyond the basic 1.2.3 alternative).</td></tr>
+          <tr><td class="wcag-sc">1.2.6</td><td class="wcag-name"><span class="n">Sign Language (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Prerecorded audio content in synchronized media.</td><td class="wcag-reqs">Sign language interpretation is provided for the audio track.</td></tr>
+          <tr><td class="wcag-sc">1.2.7</td><td class="wcag-name"><span class="n">Extended Audio Description (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Video where pauses can't fit a full description.</td><td class="wcag-reqs">Video is paused to insert extended audio description where needed.</td></tr>
+          <tr><td class="wcag-sc">1.2.8</td><td class="wcag-name"><span class="n">Media Alternative (Prerecorded)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Prerecorded synchronized media.</td><td class="wcag-reqs">A full text alternative is provided for all prerecorded media, including video-only.</td></tr>
+          <tr><td class="wcag-sc">1.2.9</td><td class="wcag-name"><span class="n">Audio-only (Live)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Live audio-only content.</td><td class="wcag-reqs">A text alternative conveying equivalent information is provided.</td></tr>
+          <tr><td class="wcag-sc">1.3.1</td><td class="wcag-name"><span class="n">Info and Relationships</span><span class="guideline">1.3 Adaptable</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Structure conveyed visually (headings, lists, tables, labels).</td><td class="wcag-reqs">The same structure/relationships are programmatically determinable or available as text.</td></tr>
+          <tr><td class="wcag-sc">1.3.2</td><td class="wcag-name"><span class="n">Meaningful Sequence</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Reading order of content.</td><td class="wcag-reqs">A correct reading sequence can be programmatically determined when it affects meaning.</td></tr>
+          <tr><td class="wcag-sc">1.3.3</td><td class="wcag-name"><span class="n">Sensory Characteristics</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Instructions referencing shape, size, position or sound.</td><td class="wcag-reqs">Instructions do not rely solely on a sensory characteristic to be understood.</td></tr>
+          <tr><td class="wcag-sc">1.3.4</td><td class="wcag-name"><span class="n">Orientation</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Content locked to one screen orientation.</td><td class="wcag-reqs">Content is not restricted to a single display orientation unless essential.</td></tr>
+          <tr><td class="wcag-sc">1.3.5</td><td class="wcag-name"><span class="n">Identify Input Purpose</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Input fields collecting user information.</td><td class="wcag-reqs">The purpose of common input fields can be programmatically determined (e.g. autocomplete).</td></tr>
+          <tr><td class="wcag-sc">1.3.6</td><td class="wcag-name"><span class="n">Identify Purpose</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">UI components, icons, and regions.</td><td class="wcag-reqs">Purpose can be programmatically determined for assistive personalization tools.</td></tr>
+          <tr><td class="wcag-sc">1.4.1</td><td class="wcag-name"><span class="n">Use of Color</span><span class="guideline">1.4 Distinguishable</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Information conveyed through color.</td><td class="wcag-reqs">Color is not the only visual means of conveying information, indicating an action, or distinguishing an element.</td></tr>
+          <tr><td class="wcag-sc">1.4.2</td><td class="wcag-name"><span class="n">Audio Control</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Audio that plays automatically for &gt;3 seconds.</td><td class="wcag-reqs">A mechanism exists to pause, stop, or control audio volume independently of system volume.</td></tr>
+          <tr><td class="wcag-sc">1.4.3</td><td class="wcag-name"><span class="n">Contrast (Minimum)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Text and images of text against their background.</td><td class="wcag-reqs">Contrast ratio of at least 4.5:1 (3:1 for large text).</td></tr>
+          <tr><td class="wcag-sc">1.4.4</td><td class="wcag-name"><span class="n">Resize Text</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Text scaling behavior.</td><td class="wcag-reqs">Text can be resized up to 200% without loss of content or functionality (excluding captions/images of text).</td></tr>
+          <tr><td class="wcag-sc">1.4.5</td><td class="wcag-name"><span class="n">Images of Text</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Text rendered as an image.</td><td class="wcag-reqs">Real text is used instead of images of text, except logotypes or when essential.</td></tr>
+          <tr><td class="wcag-sc">1.4.6</td><td class="wcag-name"><span class="n">Contrast (Enhanced)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Text and images of text.</td><td class="wcag-reqs">Contrast ratio of at least 7:1 (4.5:1 for large text).</td></tr>
+          <tr><td class="wcag-sc">1.4.7</td><td class="wcag-name"><span class="n">Low or No Background Audio</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Prerecorded audio-only speech content.</td><td class="wcag-reqs">Background sounds are absent, can be turned off, or are 20dB lower than speech.</td></tr>
+          <tr><td class="wcag-sc">1.4.8</td><td class="wcag-name"><span class="n">Visual Presentation</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Blocks of body text.</td><td class="wcag-reqs">User can control colors, width (&le;80 chars), justification, spacing, and no horizontal scroll at 200% zoom.</td></tr>
+          <tr><td class="wcag-sc">1.4.9</td><td class="wcag-name"><span class="n">Images of Text (No Exception)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Text rendered as an image.</td><td class="wcag-reqs">Images of text are used only for pure decoration or where a specific presentation is essential.</td></tr>
+          <tr><td class="wcag-sc">1.4.10</td><td class="wcag-name"><span class="n">Reflow</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Content at narrow viewports / 400% zoom.</td><td class="wcag-reqs">Content reflows to a single column without two-dimensional scrolling (some exceptions apply).</td></tr>
+          <tr><td class="wcag-sc">1.4.11</td><td class="wcag-name"><span class="n">Non-text Contrast</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">UI component boundaries and graphical objects.</td><td class="wcag-reqs">Contrast ratio of at least 3:1 against adjacent colors.</td></tr>
+          <tr><td class="wcag-sc">1.4.12</td><td class="wcag-name"><span class="n">Text Spacing</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Line height, paragraph, letter and word spacing overrides.</td><td class="wcag-reqs">No loss of content or function when spacing is increased to specified minimums.</td></tr>
+          <tr><td class="wcag-sc">1.4.13</td><td class="wcag-name"><span class="n">Content on Hover or Focus</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Tooltips and other content revealed on hover/focus.</td><td class="wcag-reqs">Revealed content is dismissible, hoverable, and persistent until dismissed or invalid.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wcag-principle" data-p="2" aria-label="Operable">
+    <div class="wcag-principle-head">
+      <span class="num">2</span>
+      <h2>Operable</h2>
+      <span class="desc">UI components and navigation must be operable by all users.</span>
+    </div>
+    <div class="wcag-tablewrap">
+      <table class="wcag-table">
+        <caption class="sr-only">Operable success criteria</caption>
+        <thead><tr><th>SC</th><th>Criterion</th><th>Level</th><th>What it covers</th><th>Requirement to pass</th></tr></thead>
+        <tbody>
+          <tr><td class="wcag-sc">2.1.1</td><td class="wcag-name"><span class="n">Keyboard</span><span class="guideline">2.1 Keyboard Accessible</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">All interactive functionality.</td><td class="wcag-reqs">Every function is operable through a keyboard interface, without requiring specific timings for keystrokes.</td></tr>
+          <tr><td class="wcag-sc">2.1.2</td><td class="wcag-name"><span class="n">No Keyboard Trap</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Keyboard focus movement.</td><td class="wcag-reqs">Focus can always be moved away from a component using only the keyboard.</td></tr>
+          <tr><td class="wcag-sc">2.1.3</td><td class="wcag-name"><span class="n">Keyboard (No Exception)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">All functionality.</td><td class="wcag-reqs">Keyboard operability with no exceptions for path-dependent input.</td></tr>
+          <tr><td class="wcag-sc">2.1.4</td><td class="wcag-name"><span class="n">Character Key Shortcuts</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Single-character keyboard shortcuts.</td><td class="wcag-reqs">Shortcuts can be turned off, remapped, or are active only on focus.</td></tr>
+          <tr><td class="wcag-sc">2.2.1</td><td class="wcag-name"><span class="n">Timing Adjustable</span><span class="guideline">2.2 Enough Time</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Time limits set by content.</td><td class="wcag-reqs">Users can turn off, adjust, or extend time limits (with narrow exceptions).</td></tr>
+          <tr><td class="wcag-sc">2.2.2</td><td class="wcag-name"><span class="n">Pause, Stop, Hide</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Moving, blinking, scrolling, or auto-updating content.</td><td class="wcag-reqs">A mechanism lets users pause, stop, or hide such content.</td></tr>
+          <tr><td class="wcag-sc">2.2.3</td><td class="wcag-name"><span class="n">No Timing</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Time limits.</td><td class="wcag-reqs">Timing is not an essential part of any activity, except real-time events.</td></tr>
+          <tr><td class="wcag-sc">2.2.4</td><td class="wcag-name"><span class="n">Interruptions</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Interruptions like alerts or updates.</td><td class="wcag-reqs">Users can postpone or suppress interruptions, except emergencies.</td></tr>
+          <tr><td class="wcag-sc">2.2.5</td><td class="wcag-name"><span class="n">Re-authenticating</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Session expiry / re-authentication.</td><td class="wcag-reqs">Data entered before re-authentication is preserved and restored afterward.</td></tr>
+          <tr><td class="wcag-sc">2.2.6</td><td class="wcag-name"><span class="n">Timeouts</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Sessions that time out due to inactivity.</td><td class="wcag-reqs">Users are warned about data loss from inactivity of over 20 hours, unless data is preserved &ge;20 hours.</td></tr>
+          <tr><td class="wcag-sc">2.3.1</td><td class="wcag-name"><span class="n">Three Flashes or Below Threshold</span><span class="guideline">2.3 Seizures and Physical Reactions</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Flashing content.</td><td class="wcag-reqs">Nothing flashes more than three times per second, or flashes are below the general flash threshold.</td></tr>
+          <tr><td class="wcag-sc">2.3.2</td><td class="wcag-name"><span class="n">Three Flashes</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Flashing content.</td><td class="wcag-reqs">No content flashes more than three times in any one-second period, with no threshold exception.</td></tr>
+          <tr><td class="wcag-sc">2.3.3</td><td class="wcag-name"><span class="n">Animation from Interactions</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Motion animation triggered by interaction.</td><td class="wcag-reqs">Animation can be disabled unless it is essential (respect reduced-motion preference).</td></tr>
+          <tr><td class="wcag-sc">2.4.1</td><td class="wcag-name"><span class="n">Bypass Blocks</span><span class="guideline">2.4 Navigable</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Repeated blocks of content across pages.</td><td class="wcag-reqs">A mechanism (e.g. skip link, landmarks) lets users bypass repeated blocks.</td></tr>
+          <tr><td class="wcag-sc">2.4.2</td><td class="wcag-name"><span class="n">Page Titled</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Page &lt;title&gt;.</td><td class="wcag-reqs">Pages have a descriptive, topic- or purpose-identifying title.</td></tr>
+          <tr><td class="wcag-sc">2.4.3</td><td class="wcag-name"><span class="n">Focus Order</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Sequential keyboard focus movement.</td><td class="wcag-reqs">Focus order preserves meaning and operability.</td></tr>
+          <tr><td class="wcag-sc">2.4.4</td><td class="wcag-name"><span class="n">Link Purpose (In Context)</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Link text.</td><td class="wcag-reqs">The purpose of a link can be determined from its text alone or with surrounding context.</td></tr>
+          <tr><td class="wcag-sc">2.4.5</td><td class="wcag-name"><span class="n">Multiple Ways</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Locating a page within a site.</td><td class="wcag-reqs">More than one way to find a page is available (e.g. search, sitemap, nav), except for a step in a process.</td></tr>
+          <tr><td class="wcag-sc">2.4.6</td><td class="wcag-name"><span class="n">Headings and Labels</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Headings and form labels.</td><td class="wcag-reqs">Headings and labels describe topic or purpose.</td></tr>
+          <tr><td class="wcag-sc">2.4.7</td><td class="wcag-name"><span class="n">Focus Visible</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Keyboard focus indicator.</td><td class="wcag-reqs">Any keyboard-operable UI has a visible focus indicator.</td></tr>
+          <tr><td class="wcag-sc">2.4.8</td><td class="wcag-name"><span class="n">Location</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Position within a set of pages.</td><td class="wcag-reqs">Information about the user's location within a site is available (e.g. breadcrumbs).</td></tr>
+          <tr><td class="wcag-sc">2.4.9</td><td class="wcag-name"><span class="n">Link Purpose (Link Only)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Link text.</td><td class="wcag-reqs">A link's purpose is identifiable from its text alone, without needing context.</td></tr>
+          <tr><td class="wcag-sc">2.4.10</td><td class="wcag-name"><span class="n">Section Headings</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Organization of content into sections.</td><td class="wcag-reqs">Section headings are used to organize content, where applicable.</td></tr>
+          <tr><td class="wcag-sc">2.4.11</td><td class="wcag-name"><span class="n">Focus Not Obscured (Minimum)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Focused element visibility.</td><td class="wcag-reqs">The focused element is not entirely hidden by author-created content (e.g. sticky headers).</td></tr>
+          <tr><td class="wcag-sc">2.4.12</td><td class="wcag-name"><span class="n">Focus Not Obscured (Enhanced)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Focused element visibility.</td><td class="wcag-reqs">No part of the focused element is hidden by author-created content.</td></tr>
+          <tr><td class="wcag-sc">2.4.13</td><td class="wcag-name"><span class="n">Focus Appearance</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Focus indicator design.</td><td class="wcag-reqs">The focus indicator meets minimum area, contrast, and thickness criteria.</td></tr>
+          <tr><td class="wcag-sc">2.5.1</td><td class="wcag-name"><span class="n">Pointer Gestures</span><span class="guideline">2.5 Input Modalities</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Multipoint or path-based gestures.</td><td class="wcag-reqs">A single-pointer alternative exists for any multi-point/path-dependent gesture.</td></tr>
+          <tr><td class="wcag-sc">2.5.2</td><td class="wcag-name"><span class="n">Pointer Cancellation</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Single-pointer actions.</td><td class="wcag-reqs">Functions can be aborted or undone before completion (activation on up-event, not down-event).</td></tr>
+          <tr><td class="wcag-sc">2.5.3</td><td class="wcag-name"><span class="n">Label in Name</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Components with a visible text label.</td><td class="wcag-reqs">The accessible name includes the visible label text (for speech-input users).</td></tr>
+          <tr><td class="wcag-sc">2.5.4</td><td class="wcag-name"><span class="n">Motion Actuation</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Functions triggered by device or user motion.</td><td class="wcag-reqs">A conventional UI alternative exists, and motion-triggering can be disabled.</td></tr>
+          <tr><td class="wcag-sc">2.5.5</td><td class="wcag-name"><span class="n">Target Size (Enhanced)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Pointer target size.</td><td class="wcag-reqs">Targets are at least 44&times;44 CSS pixels, with limited exceptions.</td></tr>
+          <tr><td class="wcag-sc">2.5.6</td><td class="wcag-name"><span class="n">Concurrent Input Mechanisms</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Support for multiple input methods.</td><td class="wcag-reqs">Content does not restrict use of available, supported input modalities.</td></tr>
+          <tr><td class="wcag-sc">2.5.7</td><td class="wcag-name"><span class="n">Dragging Movements</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Drag-based functionality.</td><td class="wcag-reqs">A single-pointer alternative (without dragging) is available.</td></tr>
+          <tr><td class="wcag-sc">2.5.8</td><td class="wcag-name"><span class="n">Target Size (Minimum)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Pointer target size.</td><td class="wcag-reqs">Targets are at least 24&times;24 CSS pixels, with defined exceptions (inline, spacing, essential).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wcag-principle" data-p="3" aria-label="Understandable">
+    <div class="wcag-principle-head">
+      <span class="num">3</span>
+      <h2>Understandable</h2>
+      <span class="desc">Information and the operation of the interface must be understandable.</span>
+    </div>
+    <div class="wcag-tablewrap">
+      <table class="wcag-table">
+        <caption class="sr-only">Understandable success criteria</caption>
+        <thead><tr><th>SC</th><th>Criterion</th><th>Level</th><th>What it covers</th><th>Requirement to pass</th></tr></thead>
+        <tbody>
+          <tr><td class="wcag-sc">3.1.1</td><td class="wcag-name"><span class="n">Language of Page</span><span class="guideline">3.1 Readable</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">The page's default human language.</td><td class="wcag-reqs">The default language of each page can be programmatically determined (e.g. &lt;html lang&gt;).</td></tr>
+          <tr><td class="wcag-sc">3.1.2</td><td class="wcag-name"><span class="n">Language of Parts</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Passages in a different language.</td><td class="wcag-reqs">The language of each passage/phrase can be programmatically determined.</td></tr>
+          <tr><td class="wcag-sc">3.1.3</td><td class="wcag-name"><span class="n">Unusual Words</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Idioms, jargon, unusual usage.</td><td class="wcag-reqs">A mechanism defines unusual words (glossary, definition, etc.).</td></tr>
+          <tr><td class="wcag-sc">3.1.4</td><td class="wcag-name"><span class="n">Abbreviations</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Abbreviations in content.</td><td class="wcag-reqs">A mechanism identifies the expanded form or meaning of abbreviations.</td></tr>
+          <tr><td class="wcag-sc">3.1.5</td><td class="wcag-name"><span class="n">Reading Level</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Text requiring advanced reading ability.</td><td class="wcag-reqs">A supplemental version is available for content beyond lower-secondary reading level.</td></tr>
+          <tr><td class="wcag-sc">3.1.6</td><td class="wcag-name"><span class="n">Pronunciation</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Words whose pronunciation affects meaning.</td><td class="wcag-reqs">A mechanism identifies the specific pronunciation where meaning is otherwise ambiguous.</td></tr>
+          <tr><td class="wcag-sc">3.2.1</td><td class="wcag-name"><span class="n">On Focus</span><span class="guideline">3.2 Predictable</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Focus events.</td><td class="wcag-reqs">Receiving focus does not trigger a change of context.</td></tr>
+          <tr><td class="wcag-sc">3.2.2</td><td class="wcag-name"><span class="n">On Input</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Changing a form control's value.</td><td class="wcag-reqs">Changing a setting does not automatically trigger a change of context, unless the user is warned beforehand.</td></tr>
+          <tr><td class="wcag-sc">3.2.3</td><td class="wcag-name"><span class="n">Consistent Navigation</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Repeated navigation mechanisms.</td><td class="wcag-reqs">Navigation that repeats across pages occurs in the same relative order each time.</td></tr>
+          <tr><td class="wcag-sc">3.2.4</td><td class="wcag-name"><span class="n">Consistent Identification</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Components with the same functionality.</td><td class="wcag-reqs">Components with the same function are identified consistently across the site.</td></tr>
+          <tr><td class="wcag-sc">3.2.5</td><td class="wcag-name"><span class="n">Change on Request</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Context changes.</td><td class="wcag-reqs">Changes of context happen only on explicit user request, or can be turned off.</td></tr>
+          <tr><td class="wcag-sc">3.2.6</td><td class="wcag-name"><span class="n">Consistent Help</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Help mechanisms (contact, chat, FAQ).</td><td class="wcag-reqs">Help, where it appears on multiple pages, appears in the same relative order each time.</td></tr>
+          <tr><td class="wcag-sc">3.3.1</td><td class="wcag-name"><span class="n">Error Identification</span><span class="guideline">3.3 Input Assistance</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Automatically detected input errors.</td><td class="wcag-reqs">The item in error is identified and described to the user in text.</td></tr>
+          <tr><td class="wcag-sc">3.3.2</td><td class="wcag-name"><span class="n">Labels or Instructions</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Form inputs requiring user input.</td><td class="wcag-reqs">Labels or instructions are provided when content requires user input.</td></tr>
+          <tr><td class="wcag-sc">3.3.3</td><td class="wcag-name"><span class="n">Error Suggestion</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Detected input errors.</td><td class="wcag-reqs">Suggestions for correction are provided, unless doing so is a security/purpose risk.</td></tr>
+          <tr><td class="wcag-sc">3.3.4</td><td class="wcag-name"><span class="n">Error Prevention (Legal, Financial, Data)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Submissions with legal, financial, or data consequences.</td><td class="wcag-reqs">Submissions are reversible, checked for errors, or confirmed before finalizing.</td></tr>
+          <tr><td class="wcag-sc">3.3.5</td><td class="wcag-name"><span class="n">Help</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Complex input tasks.</td><td class="wcag-reqs">Context-sensitive help is available.</td></tr>
+          <tr><td class="wcag-sc">3.3.6</td><td class="wcag-name"><span class="n">Error Prevention (All)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Any submission requiring user input.</td><td class="wcag-reqs">All submissions are reversible, checked, or confirmed &mdash; not just legal/financial/data ones.</td></tr>
+          <tr><td class="wcag-sc">3.3.7</td><td class="wcag-name"><span class="n">Redundant Entry</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Information entered earlier in a process.</td><td class="wcag-reqs">Previously entered information is auto-populated or available for the user to select, unless re-entry is essential.</td></tr>
+          <tr><td class="wcag-sc">3.3.8</td><td class="wcag-name"><span class="n">Accessible Authentication (Minimum)</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Authentication processes.</td><td class="wcag-reqs">No cognitive function test (e.g. puzzle, memorization) is required, unless an alternative or assistance is provided.</td></tr>
+          <tr><td class="wcag-sc">3.3.9</td><td class="wcag-name"><span class="n">Accessible Authentication (Enhanced)</span></td><td class="wcag-level"><span class="wcag-pill AAA">AAA</span></td><td class="wcag-covers">Authentication processes.</td><td class="wcag-reqs">No cognitive function test at all, including object recognition, with no exceptions.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wcag-principle" data-p="4" aria-label="Robust">
+    <div class="wcag-principle-head">
+      <span class="num">4</span>
+      <h2>Robust</h2>
+      <span class="desc">Content must be robust enough to work with current and future user agents, including assistive technology.</span>
+    </div>
+    <div class="wcag-tablewrap">
+      <table class="wcag-table">
+        <caption class="sr-only">Robust success criteria</caption>
+        <thead><tr><th>SC</th><th>Criterion</th><th>Level</th><th>What it covers</th><th>Requirement to pass</th></tr></thead>
+        <tbody>
+          <tr><td class="wcag-sc">4.1.1</td><td class="wcag-name"><span class="n">Parsing</span><span class="guideline">4.1 Compatible (obsolete in 2.2)</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Markup validity.</td><td class="wcag-reqs">Removed in WCAG 2.2 &mdash; modern parsers make this largely obsolete; historically required well-formed, non-duplicated markup.</td></tr>
+          <tr><td class="wcag-sc">4.1.2</td><td class="wcag-name"><span class="n">Name, Role, Value</span></td><td class="wcag-level"><span class="wcag-pill A">A</span></td><td class="wcag-covers">Custom and standard UI components.</td><td class="wcag-reqs">Name, role, state, and value are programmatically determinable and can be set by assistive technology.</td></tr>
+          <tr><td class="wcag-sc">4.1.3</td><td class="wcag-name"><span class="n">Status Messages</span></td><td class="wcag-level"><span class="wcag-pill AA">AA</span></td><td class="wcag-covers">Status updates not receiving focus (e.g. form success, search results count).</td><td class="wcag-reqs">Status messages can be programmatically determined and presented to assistive technology without a focus change.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p style="font-size:0.82rem;color:var(--ink-muted);border-top:1px solid var(--line);padding-top:1rem;margin-top:0.5rem;">Based on WCAG 2.2 (W3C Recommendation). <code>4.1.1 Parsing</code> was formally removed in 2.2 but is listed here for reference against older audits. "Requirement to pass" is a plain-language summary &mdash; consult the official W3C Understanding documents for normative wording.</p>
+</main>
+<footer class="pagefoot">
+  <span class="step"></span>
+  <span class="step"></span>
+</footer>
+</div>
+
 </div>
 </div>
 
 <script>
 (function () {
   var ID_TO_VIEW = {"main-ch1": "ch1", "t1-1": "ch1", "h1-1": "ch1", "h1-1-1": "ch1", "h1-1-2": "ch1", "t1-2": "ch1", "h1-2": "ch1", "h1-2-1": "ch1", "h1-2-2": "ch1", "h1-2-3": "ch1", "t1-3": "ch1", "h1-3": "ch1", "t1-4": "ch1", "h1-4": "ch1", "h1-4-1": "ch1", "h1-4-2": "ch1", "h1-4-3": "ch1", "h1-4-4": "ch1", "h1-4-5": "ch1", "t1-5": "ch1", "h1-5": "ch1", "h1-5-1": "ch1", "h1-5-2": "ch1", "h1-5-3": "ch1", "recap-heading-ch1": "ch1", "main-ch2": "ch2", "t2-1": "ch2", "h2-1": "ch2", "h2-1-1": "ch2", "h2-1-2": "ch2", "h2-1-3": "ch2", "h2-1-4": "ch2", "h2-1-5": "ch2", "h2-1-6": "ch2", "t2-2": "ch2", "h2-2": "ch2", "h2-2-1": "ch2", "h2-2-2": "ch2", "h2-2-3": "ch2", "t2-3": "ch2", "h2-3": "ch2", "recap-heading-ch2": "ch2", "main-ch3": "ch3", "t3-1": "ch3", "h3-1": "ch3", "h3-1-1": "ch3", "h3-1-2": "ch3", "h3-1-3": "ch3", "t3-2": "ch3", "h3-2": "ch3", "h3-2-1": "ch3", "h3-2-2": "ch3", "h3-2-3": "ch3", "h3-2-4": "ch3", "h3-2-5": "ch3", "recap-heading-ch3": "ch3", "main-ch4": "ch4", "t4-1": "ch4", "h4-1": "ch4", "t4-2": "ch4", "h4-2": "ch4", "h4-2-1": "ch4", "h4-2-2": "ch4", "ep-bva-title": "ch4", "ep-bva-desc": "ch4", "h4-2-3": "ch4", "h4-2-4": "ch4", "stt-title": "ch4", "stt-desc": "ch4", "arrow-stt": "ch4", "t4-3": "ch4", "h4-3": "ch4", "cfg-title": "ch4", "cfg-desc": "ch4", "arrow-cfg": "ch4", "h4-3-1": "ch4", "h4-3-2": "ch4", "h4-3-3": "ch4", "t4-4": "ch4", "h4-4": "ch4", "t4-5": "ch4", "h4-5": "ch4", "h4-5-1": "ch4", "h4-5-2": "ch4", "h4-5-3": "ch4", "recap-heading-ch4": "ch4", "main-ch5": "ch5", "t5-1": "ch5", "h5-1": "ch5", "h5-1-1": "ch5", "h5-1-2": "ch5", "h5-1-3": "ch5", "h5-1-4": "ch5", "h5-1-5": "ch5", "h5-1-6": "ch5", "h5-1-7": "ch5", "t5-2": "ch5", "h5-2": "ch5", "h5-2-1": "ch5", "h5-2-2": "ch5", "h5-2-3": "ch5", "h5-2-4": "ch5", "t5-3": "ch5", "h5-3": "ch5", "h5-3-1": "ch5", "h5-3-2": "ch5", "h5-3-3": "ch5", "t5-4": "ch5", "h5-4": "ch5", "t5-5": "ch5", "h5-5": "ch5", "recap-heading-ch5": "ch5", "main-ch6": "ch6", "t6-1": "ch6", "h6-1": "ch6", "t6-2": "ch6", "h6-2": "ch6", "recap-heading-ch6": "ch6", "main-ta1": "ta1", "tta1-1": "ta1", "hta1-1": "ta1", "tta1-2": "ta1", "hta1-2": "ta1", "hta1-2-1": "ta1", "hta1-2-2": "ta1", "hta1-2-3": "ta1", "hta1-2-4": "ta1", "tta1-3": "ta1", "hta1-3": "ta1", "hta1-3-1": "ta1", "hta1-3-2": "ta1", "hta1-3-3": "ta1", "hta1-3-4": "ta1", "hta1-3-5": "ta1", "hta1-3-6": "ta1", "hta1-3-7": "ta1", "recap-heading-ta1": "ta1", "main-ta2": "ta2", "tta2-1": "ta2", "hta2-1": "ta2", "hta2-1-1": "ta2", "hta2-1-2": "ta2", "hta2-1-3": "ta2", "tta2-2": "ta2", "hta2-2": "ta2", "hta2-2-1": "ta2", "hta2-2-2": "ta2", "recap-heading-ta2": "ta2", "main-ta3": "ta3", "tta3-1": "ta3", "hta3-1": "ta3", "hta3-1-1": "ta3", "hta3-1-2": "ta3", "hta3-1-3": "ta3", "tta3-2": "ta3", "hta3-2": "ta3", "hta3-2-1": "ta3", "hta3-2-2": "ta3", "hta3-2-3": "ta3", "tta3-3": "ta3", "hta3-3": "ta3", "hta3-3-1": "ta3", "hta3-3-2": "ta3", "tta3-4": "ta3", "hta3-4": "ta3", "hta3-4-1": "ta3", "hta3-4-2": "ta3", "hta3-4-3": "ta3", "tta3-5": "ta3", "hta3-5": "ta3", "hta3-5-1": "ta3", "hta3-5-2": "ta3", "recap-heading-ta3": "ta3", "main-ta4": "ta4", "tta4-1": "ta4", "hta4-1": "ta4", "hta4-1-1": "ta4", "hta4-1-2": "ta4", "hta4-1-3": "ta4", "tta4-2": "ta4", "hta4-2": "ta4", "hta4-2-1": "ta4", "hta4-2-2": "ta4", "hta4-2-3": "ta4", "tta4-3": "ta4", "hta4-3": "ta4", "hta4-3-1": "ta4", "hta4-3-2": "ta4", "tta4-4": "ta4", "hta4-4": "ta4", "hta4-4-1": "ta4", "recap-heading-ta4": "ta4", "main-ta5": "ta5", "tta5-1": "ta5", "hta5-1": "ta5", "tta5-2": "ta5", "hta5-2": "ta5", "hta5-2-1": "ta5", "hta5-2-2": "ta5", "tta5-3": "ta5", "hta5-3": "ta5", "hta5-3-1": "ta5", "hta5-3-2": "ta5", "recap-heading-ta5": "ta5", "main-pt1": "pt1", "recap-heading-pt1": "pt1", "pt1-1": "pt1", "pt1-2": "pt1", "pt1-3": "pt1", "pt1-3-1": "pt1", "pt1-3-2": "pt1", "pt1-4": "pt1", "pt1-5": "pt1", "main-pt2": "pt2", "recap-heading-pt2": "pt2", "pt2-1": "pt2", "pt2-1-1": "pt2", "pt2-1-2": "pt2", "pt2-1-3": "pt2", "pt2-2": "pt2", "pt2-3": "pt2", "pt2-4": "pt2", "main-pt3": "pt3", "recap-heading-pt3": "pt3", "pt3-1": "pt3", "pt3-2": "pt3", "pt3-3": "pt3", "pt3-4": "pt3", "main-pt4": "pt4", "recap-heading-pt4": "pt4", "pt4-1": "pt4", "pt4-1-1": "pt4", "pt4-1-2": "pt4", "pt4-1-3": "pt4", "pt4-2": "pt4", "pt4-2-1": "pt4", "pt4-2-2": "pt4", "pt4-2-3": "pt4", "pt4-2-4": "pt4", "pt4-2-5": "pt4", "pt4-2-6": "pt4", "pt4-2-7": "pt4", "pt4-2-8": "pt4", "pt4-3": "pt4", "pt4-4": "pt4", "main-pt5": "pt5", "recap-heading-pt5": "pt5", "pt5-1": "pt5", "pt5-2": "pt5", "main-ga1": "ga1", "recap-heading-ga1": "ga1", "ga1-1": "ga1", "ga1-1-1": "ga1", "ga1-1-2": "ga1", "ga1-1-3": "ga1", "ga1-1-4": "ga1", "ga1-2": "ga1", "ga1-2-1": "ga1", "ga1-2-2": "ga1", "main-ga2": "ga2", "recap-heading-ga2": "ga2", "ga2-1": "ga2", "ga2-1-1": "ga2", "ga2-1-2": "ga2", "ga2-1-3": "ga2", "ga2-2": "ga2", "ga2-2-1": "ga2", "ga2-2-2": "ga2", "ga2-2-3": "ga2", "ga2-2-4": "ga2", "ga2-2-5": "ga2", "ga2-3": "ga2", "ga2-3-1": "ga2", "ga2-3-2": "ga2", "main-ga3": "ga3", "recap-heading-ga3": "ga3", "ga3-1": "ga3", "ga3-1-1": "ga3", "ga3-1-2": "ga3", "ga3-1-3": "ga3", "ga3-1-4": "ga3", "ga3-2": "ga3", "ga3-2-1": "ga3", "ga3-2-2": "ga3", "ga3-2-3": "ga3", "ga3-3": "ga3", "ga3-3-1": "ga3", "ga3-4": "ga3", "ga3-4-1": "ga3", "main-ga4": "ga4", "recap-heading-ga4": "ga4", "ga4-1": "ga4", "ga4-1-1": "ga4", "ga4-1-2": "ga4", "ga4-1-3": "ga4", "ga4-2": "ga4", "ga4-2-1": "ga4", "ga4-2-2": "ga4", "main-ga5": "ga5", "recap-heading-ga5": "ga5", "ga5-1": "ga5", "ga5-1-1": "ga5", "ga5-1-2": "ga5", "ga5-1-3": "ga5", "ga5-1-4": "ga5", "ga5-2": "ga5", "ga5-2-1": "ga5", "ga5-2-2": "ga5", "ga5-2-3": "ga5"};
-  var VIEWS = ["hub", "ctfl", "cta", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ta1", "ta2", "ta3", "ta4", "ta5", "ctpt", "pt1", "pt2", "pt3", "pt4", "pt5", "ctgenai", "ga1", "ga2", "ga3", "ga4", "ga5"];
+  var VIEWS = ["hub", "ctfl", "cta", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ta1", "ta2", "ta3", "ta4", "ta5", "ctpt", "pt1", "pt2", "pt3", "pt4", "pt5", "ctgenai", "ga1", "ga2", "ga3", "ga4", "ga5", "wcag"];
 
   function resolveView(id) {
     if (!id) return "hub";
@@ -5113,6 +5388,69 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       }
     }
   });
+})();
+</script>
+
+<script>
+(function () {
+  var view = document.getElementById('view-wcag');
+  if (!view) return;
+  var levelBtns = view.querySelectorAll('button[data-level]');
+  var principleBtns = view.querySelectorAll('button[data-principle]');
+  var state = { level: 'all', principle: 'all' };
+
+  function apply() {
+    var rows = view.querySelectorAll('tbody tr');
+    var shown = 0;
+    rows.forEach(function (tr) {
+      var pill = tr.querySelector('.wcag-pill');
+      var lvl = pill ? pill.textContent.trim() : '';
+      var principle = tr.closest('.wcag-principle').getAttribute('data-p');
+      var visible = (state.level === 'all' || state.level === lvl) && (state.principle === 'all' || state.principle === principle);
+      tr.classList.toggle('wcag-hide', !visible);
+      if (visible) shown++;
+    });
+    var count = document.getElementById('wcag-shown-count');
+    if (count) count.textContent = shown;
+    view.querySelectorAll('.wcag-principle').forEach(function (sec) {
+      var anyVisible = sec.querySelectorAll('tbody tr:not(.wcag-hide)').length > 0;
+      sec.style.display = anyVisible ? '' : 'none';
+    });
+  }
+
+  function updateTotals() {
+    var all = view.querySelectorAll('tbody tr .wcag-pill');
+    var counts = { A: 0, AA: 0, AAA: 0 };
+    all.forEach(function (p) { counts[p.textContent.trim()]++; });
+    var a = document.getElementById('wcag-count-a');
+    var aa = document.getElementById('wcag-count-aa');
+    var aaa = document.getElementById('wcag-count-aaa');
+    if (a) a.textContent = counts.A;
+    if (aa) aa.textContent = counts.AA;
+    if (aaa) aaa.textContent = counts.AAA;
+  }
+
+  levelBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      levelBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      state.level = btn.getAttribute('data-level');
+      apply();
+    });
+  });
+  principleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      principleBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      state.principle = btn.getAttribute('data-principle');
+      apply();
+    });
+  });
+
+  updateTotals();
+  apply();
 })();
 </script>
 
