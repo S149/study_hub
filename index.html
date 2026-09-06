@@ -2,51 +2,145 @@
 <style>
 
 :root {
-  --bg: #F4F6F5;
+  color-scheme: light dark;
+
+  /* -- surfaces -- */
+  --bg: #F7F9FC;
   --surface: #FFFFFF;
-  --surface-2: #EBF0EE;
-  --ink: #14181A;
-  --ink-muted: #415155;
-  --line: #DADFDD;
-  --line-strong: #7C8D87;
-  --accent: #0C584F;
+  --surface-2: #EAF1F8;
+  --surface-3: #DCEAF7;
+  --hover-bg: #F1F6FA;
+
+  /* -- text -- */
+  --ink: #17202A;
+  --ink-muted: #627D98;
+  --ink-important: #123E63;
+  --heading-1: #0B1F33;
+  --heading-2: #123E63;
+  --heading-3: #28527A;
+
+  /* -- borders -- */
+  --line: #DCE5EC;
+  --line-strong: #C7D6E5;
+
+  /* -- accent / interactive -- */
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --accent-active: #1E40AF;
   --accent-ink: #FFFFFF;
-  --c1: #0F6E63; --c2: #4338CA; --c3: #2A6F8A; --c4: #8A5A00; --c5: #8A3350; --c6: #3C4E5C;
-  --radius: 10px;
-  --shadow: 0 1px 2px rgba(20,24,26,0.06), 0 6px 20px -8px rgba(20,24,26,0.12);
+  --heading-accent: #3478C9;
+
+  /* -- sidebar (always Midnight Blue, in both themes) -- */
+  --sidebar-bg: #0B1F33;
+  --sidebar-ink: #FFFFFF;
+  --sidebar-ink-muted: #C7D6E5;
+  --sidebar-active-bg: #123E63;
+  --sidebar-hover-bg: #172F46;
+
+  /* -- semantic callouts -- */
+  --note-bg: #EAF1F8; --note-border: #C7D6E5; --note-title: #123E63; --note-icon: #2563EB;
+  --warn-bg: #FFF7E8; --warn-border: #F2D6A2; --warn-title: #7A5315; --warn-icon: #B7791F;
+  --success-bg: #EEF7F2; --success-border: #C8E3D2; --success-title: #24543A;
+
+  /* -- code -- */
+  --code-bg: #F3F6F9;
+  --code-inline-bg: #EEF2F6;
+  --code-ink: #17202A;
+
+  --c1: #123E63; --c2: #28527A; --c3: #3478C9; --c4: #2563EB; --c5: #0B1F33; --c6: #627D98;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(11, 31, 51, 0.06);
   --measure: 68ch;
-  --font-heading: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
-  --font-label: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-heading: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-label: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  /* No JetBrains Mono anywhere outside literal code blocks (none exist yet) —
+     per the design system, only Manrope + Inter are used for all UI text,
+     labels, tags and numerals. --font-code is reserved for future <pre>/<code>. */
+  --font-mono: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #10151A;
-    --surface: #1B2228;
-    --surface-2: #212A31;
-    --ink: #E9EDEC;
-    --ink-muted: #AEB9B7;
-    --line: #2B343B;
-    --line-strong: #5C6E79;
-    --accent: #5FC9BB;
-    --accent-ink: #0B1114;
-    --c1: #5FC9BB; --c2: #9B9CFF; --c3: #6FC6E8; --c4: #E8B84B; --c5: #E2799F; --c6: #9FB4C4;
-    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 24px -10px rgba(0,0,0,0.5);
+    --bg: #0B1624;
+    --surface: #142538;
+    --surface-2: #1A3146;
+    --surface-3: #172B3D;
+    --hover-bg: #172B3D;
+
+    --ink: #E8F0F7;
+    --ink-muted: #A9BDCE;
+    --ink-important: #B9D4EA;
+    --heading-1: #F1F6FA;
+    --heading-2: #B9D4EA;
+    --heading-3: #8FB7D5;
+
+    --line: #263D52;
+    --line-strong: #34516A;
+
+    --accent: #5B9CFF;
+    --accent-hover: #6EA8DE;
+    --accent-active: #2563EB;
+    --accent-ink: #FFFFFF;
+    --heading-accent: #6EA8DE;
+
+    --sidebar-bg: #081522;
+    --sidebar-ink: #FFFFFF;
+    --sidebar-ink-muted: #C7D8E6;
+    --sidebar-active-bg: #123E63;
+    --sidebar-hover-bg: #102A40;
+
+    --note-bg: #172F45; --note-border: #28527A; --note-title: #B9D4EA; --note-icon: #6EA8DE;
+    --warn-bg: #332A1C; --warn-border: #66512C; --warn-title: #E5C27A; --warn-icon: #E5C27A;
+    --success-bg: #182D25; --success-border: #2B5141; --success-title: #A8D5BE;
+
+    --code-bg: #0A1522;
+    --code-inline-bg: #172B3D;
+    --code-ink: #DCE7EF;
+
+    --c1: #28527A; --c2: #3478C9; --c3: #5B9CFF; --c4: #6EA8DE; --c5: #8FB7D5; --c6: #A9BDCE;
+    --shadow: none;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #10151A;
-  --surface: #1B2228;
-  --surface-2: #212A31;
-  --ink: #E9EDEC;
-  --ink-muted: #A9B4B2;
-  --line: #2B343B;
-  --line-strong: #5C6E79;
-  --accent: #5FC9BB;
-  --accent-ink: #0B1114;
-  --c1: #5FC9BB; --c2: #9B9CFF; --c3: #6FC6E8; --c4: #E8B84B; --c5: #E2799F; --c6: #9FB4C4;
-  --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 24px -10px rgba(0,0,0,0.5);
+  --bg: #0B1624;
+  --surface: #142538;
+  --surface-2: #1A3146;
+  --surface-3: #172B3D;
+  --hover-bg: #172B3D;
+
+  --ink: #E8F0F7;
+  --ink-muted: #A9BDCE;
+  --ink-important: #B9D4EA;
+  --heading-1: #F1F6FA;
+  --heading-2: #B9D4EA;
+  --heading-3: #8FB7D5;
+
+  --line: #263D52;
+  --line-strong: #34516A;
+
+  --accent: #5B9CFF;
+  --accent-hover: #6EA8DE;
+  --accent-active: #2563EB;
+  --accent-ink: #FFFFFF;
+  --heading-accent: #6EA8DE;
+
+  --sidebar-bg: #081522;
+  --sidebar-ink: #FFFFFF;
+  --sidebar-ink-muted: #C7D8E6;
+  --sidebar-active-bg: #123E63;
+  --sidebar-hover-bg: #102A40;
+
+  --note-bg: #172F45; --note-border: #28527A; --note-title: #B9D4EA; --note-icon: #6EA8DE;
+  --warn-bg: #332A1C; --warn-border: #66512C; --warn-title: #E5C27A; --warn-icon: #E5C27A;
+  --success-bg: #182D25; --success-border: #2B5141; --success-title: #A8D5BE;
+
+  --code-bg: #0A1522;
+  --code-inline-bg: #172B3D;
+  --code-ink: #DCE7EF;
+
+  --c1: #28527A; --c2: #3478C9; --c3: #5B9CFF; --c4: #6EA8DE; --c5: #8FB7D5; --c6: #A9BDCE;
+  --shadow: none;
 }
 
 * { box-sizing: border-box; }
@@ -73,14 +167,16 @@ body {
 .skip-link:focus { transform: translateY(0); }
 
 a { color: var(--accent); text-decoration-thickness: from-font; text-underline-offset: 0.15em; }
-a:hover { text-decoration-thickness: 2px; }
+a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; text-wrap: wrap; color: var(--ink); }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 600; line-height: 1.3; text-wrap: wrap; color: var(--heading-3); }
+h1 { font-weight: 700; color: var(--heading-1); }
+h2 { color: var(--heading-2); }
 p { text-wrap: pretty; }
 
 .eyebrow {
@@ -123,7 +219,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 }
 
 .hero { padding: 3rem 0 2.25rem; border-bottom: 1px solid var(--line); margin-bottom: 2.5rem; }
-.hero h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 1rem; }
+.hero h1 { font-size: clamp(1.75rem, 3.2vw, 2rem); line-height: 1.25; margin: 0 0 1rem; }
 .hero .lede { font-size: 1.1rem; color: var(--ink-muted); margin: 0 0 1.5rem; }
 .hero .minutes { font-family: var(--font-mono); }
 
@@ -138,8 +234,8 @@ section.topic .subhead {
   font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.07em;
   font-size: 0.75rem; color: var(--ink-muted); margin: 0 0 0.4rem;
 }
-section.topic h2 { font-size: 1.55rem; margin: 0 0 0.85rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--accent); scroll-margin-top: 5.5rem; text-wrap: wrap; }
-section.topic h3 { font-size: 1.15rem; margin: 1.75rem 0 0.6rem; scroll-margin-top: 5.5rem; }
+section.topic h2 { font-size: 1.5rem; line-height: 2rem; margin: 0 0 0.85rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--line-strong); scroll-margin-top: 5.5rem; text-wrap: wrap; }
+section.topic h3 { font-size: 1.125rem; line-height: 1.65rem; margin: 1.75rem 0 0.6rem; scroll-margin-top: 5.5rem; }
 section.topic p { margin: 0 0 2.4rem; }
 section.topic > p:first-of-type { font-size: 1.02rem; }
 
@@ -154,16 +250,17 @@ section.topic .card h3, .card h4 { margin: 0 0 0.4rem; font-size: 1rem; }
 .card p { margin: 0; font-size: 0.94rem; color: var(--ink-muted); }
 .card .tag {
   display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
-  color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+  color: var(--ink-important); background: var(--surface-2);
   padding: 0.12rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem;
 }
 
 .callout {
-  border-left: 4px solid var(--accent); background: var(--surface-2); border-radius: 0 8px 8px 0;
+  border: 1px solid var(--note-border); border-left: 3px solid var(--note-border);
+  background: var(--note-bg); border-radius: 0 8px 8px 0;
   padding: 1rem 1.25rem; margin: 1.25rem 0; max-width: var(--measure);
 }
-.callout .label { font-family: var(--font-label); font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); margin: 0 0 0.35rem; display: block; }
-.callout p { margin: 0; }
+.callout .label { font-family: var(--font-label); font-weight: 600; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--note-title); margin: 0 0 0.35rem; display: block; }
+.callout p { margin: 0; color: var(--ink); }
 
 table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
 .table-wrap { margin: 1.25rem 0; border: 1px solid var(--line-strong); border-radius: 8px; }
@@ -173,8 +270,9 @@ table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
 .table-wrap tbody tr:last-child td:first-child, .table-wrap tbody tr:last-child th:first-child { border-bottom-left-radius: 7px; }
 .table-wrap tbody tr:last-child td:last-child, .table-wrap tbody tr:last-child th:last-child { border-bottom-right-radius: 7px; }
 .table-wrap table { min-width: 0; }
-th, td { text-align: left; padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--line-strong); vertical-align: top; overflow-wrap: break-word; }
-thead th { background: var(--surface-2); font-family: var(--font-label); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+th, td { text-align: left; padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: break-word; }
+thead th { background: var(--surface-2); color: var(--ink-important); font-family: var(--font-label); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+tbody tr:hover td, tbody tr:hover th { background: var(--hover-bg); }
 tbody tr:last-child td, tbody tr:last-child th { border-bottom: none; }
 td.mono, th.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
@@ -311,12 +409,6 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 .diagram svg .line-stroke { stroke: var(--line-strong); }
 .diagram svg .surface-fill { fill: var(--surface); }
 
-:root { --accent: #1C4B45; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --accent: #7FDDD0; }
-}
-:root[data-theme="dark"] { --accent: #7FDDD0; }
-
 .hublist { list-style: none; margin: 2rem 0 3rem; padding: 0; display: grid; gap: 0.9rem; }
 .hublist-divider {
   margin: 0.4rem 0 0.2rem; padding-top: 1.6rem; border-top: 1px solid var(--line);
@@ -418,40 +510,40 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 }
 
 /* ---- per-chapter accent scoping (single-page hub) ---- */
-#view-ch1 { --accent: #0C584F; }
-#view-ch2 { --accent: #4035C8; }
+#view-ch1 { --accent: #14508A; }
+#view-ch2 { --accent: #1D3E6E; }
 #view-ch3 { --accent: #205367; }
-#view-ch4 { --accent: #6B4600; }
-#view-ch5 { --accent: #86324E; }
+#view-ch4 { --accent: #0F3A66; }
+#view-ch5 { --accent: #16406B; }
 #view-ch6 { --accent: #3C4E5C; }
-#view-ta1 { --accent: #961B31; }
-#view-ta2 { --accent: #5F38A2; }
-#view-ta3 { --accent: #265926; }
-#view-ta4 { --accent: #7E390E; }
+#view-ta1 { --accent: #0B3D91; }
+#view-ta2 { --accent: #234F7D; }
+#view-ta3 { --accent: #28527A; }
+#view-ta4 { --accent: #103F6B; }
 #view-ta5 { --accent: #25527A; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) #view-ch1 { --accent: #5FC9BB; }
-  :root:not([data-theme="light"]) #view-ch2 { --accent: #AFB0FF; }
+  :root:not([data-theme="light"]) #view-ch1 { --accent: #8CC2F0; }
+  :root:not([data-theme="light"]) #view-ch2 { --accent: #9FB8E8; }
   :root:not([data-theme="light"]) #view-ch3 { --accent: #6FC6E8; }
-  :root:not([data-theme="light"]) #view-ch4 { --accent: #E8B84B; }
-  :root:not([data-theme="light"]) #view-ch5 { --accent: #EA9FBA; }
+  :root:not([data-theme="light"]) #view-ch4 { --accent: #94BDEA; }
+  :root:not([data-theme="light"]) #view-ch5 { --accent: #B0D0F0; }
   :root:not([data-theme="light"]) #view-ch6 { --accent: #A5B9C8; }
-  :root:not([data-theme="light"]) #view-ta1 { --accent: #F19EAC; }
-  :root:not([data-theme="light"]) #view-ta2 { --accent: #C6AEEE; }
-  :root:not([data-theme="light"]) #view-ta3 { --accent: #9FD79F; }
-  :root:not([data-theme="light"]) #view-ta4 { --accent: #F2B37E; }
+  :root:not([data-theme="light"]) #view-ta1 { --accent: #A9C6EE; }
+  :root:not([data-theme="light"]) #view-ta2 { --accent: #93BEE8; }
+  :root:not([data-theme="light"]) #view-ta3 { --accent: #8FB7D5; }
+  :root:not([data-theme="light"]) #view-ta4 { --accent: #8FC0E8; }
   :root:not([data-theme="light"]) #view-ta5 { --accent: #9CC7EC; }
 }
-:root[data-theme="dark"] #view-ch1 { --accent: #5FC9BB; }
-:root[data-theme="dark"] #view-ch2 { --accent: #AFB0FF; }
+:root[data-theme="dark"] #view-ch1 { --accent: #8CC2F0; }
+:root[data-theme="dark"] #view-ch2 { --accent: #9FB8E8; }
 :root[data-theme="dark"] #view-ch3 { --accent: #6FC6E8; }
-:root[data-theme="dark"] #view-ch4 { --accent: #E8B84B; }
-:root[data-theme="dark"] #view-ch5 { --accent: #EA9FBA; }
+:root[data-theme="dark"] #view-ch4 { --accent: #94BDEA; }
+:root[data-theme="dark"] #view-ch5 { --accent: #B0D0F0; }
 :root[data-theme="dark"] #view-ch6 { --accent: #A5B9C8; }
-:root[data-theme="dark"] #view-ta1 { --accent: #F19EAC; }
-:root[data-theme="dark"] #view-ta2 { --accent: #C6AEEE; }
-:root[data-theme="dark"] #view-ta3 { --accent: #9FD79F; }
-:root[data-theme="dark"] #view-ta4 { --accent: #F2B37E; }
+:root[data-theme="dark"] #view-ta1 { --accent: #A9C6EE; }
+:root[data-theme="dark"] #view-ta2 { --accent: #93BEE8; }
+:root[data-theme="dark"] #view-ta3 { --accent: #8FB7D5; }
+:root[data-theme="dark"] #view-ta4 { --accent: #8FC0E8; }
 :root[data-theme="dark"] #view-ta5 { --accent: #9CC7EC; }
 
 
@@ -650,12 +742,23 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 .side-toc-backdrop.open { display: block; }
 
 .side-toc {
+  /* The sidebar is always Midnight Blue, in both light and dark theme —
+     shadow the shared tokens so every descendant rule below (already
+     written in terms of --ink/--line/--surface-2/--accent) just works. */
+  --ink: var(--sidebar-ink);
+  --ink-muted: var(--sidebar-ink-muted);
+  --ink-3: var(--sidebar-ink-muted);
+  --line: rgba(255, 255, 255, 0.1);
+  --surface-2: var(--sidebar-hover-bg);
+  --accent: var(--sidebar-ink);
+
   flex: 0 0 272px; width: 272px; box-sizing: border-box;
   position: fixed; top: 0; left: 0; z-index: 56;
   height: 100vh; overflow-y: auto;
-  background: var(--surface); border-right: 1px solid var(--line);
+  background: var(--sidebar-bg); border-right: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.9rem 0.85rem 2.5rem;
 }
+.toc-chapter.is-current > .toc-ch-row { background: var(--sidebar-active-bg); }
 .side-toc-head {
   display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
   padding: 0.3rem 0.3rem 0.9rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--line);
@@ -673,11 +776,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 }
 .side-toc-close:hover { color: var(--ink); background: var(--surface-2); }
 
-.toc-chapter { --card-accent: var(--card-accent-light); border-bottom: 1px solid var(--line); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .toc-chapter { --card-accent: var(--card-accent-dark); }
-}
-:root[data-theme="dark"] .toc-chapter { --card-accent: var(--card-accent-dark); }
+/* The sidebar background is always dark, so chapter accent colors always
+   use their lighter "dark surface" variant for legible contrast. */
+.toc-chapter { --card-accent: var(--card-accent-dark); border-bottom: 1px solid var(--line); }
 .toc-chapter:last-child { border-bottom: none; }
 .toc-section-divider {
   padding: 0.85rem 0.9rem 0.4rem; margin-top: 0.15rem;
@@ -786,7 +887,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   .stat-pop { transition: none; }
 }
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 <div class="shell">
 <a class="skip-link" href="#main-hub" id="skip-link">Skip to main content</a>
 <button class="side-toc-toggle-btn" id="side-toc-toggle" type="button" aria-expanded="false" aria-controls="side-toc">
@@ -799,7 +900,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     <button class="side-toc-close" id="side-toc-close" type="button" aria-label="Close contents menu">&times;</button>
   </div>
   <nav class="side-toc-nav" aria-label="Chapters and sections">
-    <div class="toc-chapter" data-ch="ch1" style="--card-accent-light:#0C584F; --card-accent-dark:#5FC9BB;">
+    <div class="toc-chapter" data-ch="ch1" style="--card-accent-light:#14508A; --card-accent-dark:#8CC2F0;">
       <div class="toc-ch-row">
         <a class="toc-ch-link" href="#ch1">
           <span class="toc-ch-label">1. Fundamentals of Testing</span>
@@ -813,7 +914,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       <ul class="toc" aria-label="Contents of Chapter 1"><li class="toc-sec"><a href="#h1-1"><span class="n">1.1</span>What is Testing?</a><ul class="toc-sub"><li><a href="#h1-1-1"><span class="n">1.1.1</span>Test Objectives</a></li><li><a href="#h1-1-2"><span class="n">1.1.2</span>Testing and Debugging</a></li></ul></li><li class="toc-sec"><a href="#h1-2"><span class="n">1.2</span>Why is Testing Necessary?</a><ul class="toc-sub"><li><a href="#h1-2-1"><span class="n">1.2.1</span>Testing&rsquo;s Contributions to Success</a></li><li><a href="#h1-2-2"><span class="n">1.2.2</span>Testing and Quality Assurance (QA)</a></li><li><a href="#h1-2-3"><span class="n">1.2.3</span>Errors, Defects, Failures, and Root Causes</a></li></ul></li><li class="toc-sec"><a href="#h1-3"><span class="n">1.3</span>Testing Principles</a></li><li class="toc-sec"><a href="#h1-4"><span class="n">1.4</span>Test Activities, Testware and Test Roles</a><ul class="toc-sub"><li><a href="#h1-4-1"><span class="n">1.4.1</span>Test Activities and Tasks</a></li><li><a href="#h1-4-2"><span class="n">1.4.2</span>Test Process in Context</a></li><li><a href="#h1-4-3"><span class="n">1.4.3</span>Testware</a></li><li><a href="#h1-4-4"><span class="n">1.4.4</span>Traceability between the Test Basis and Testware</a></li><li><a href="#h1-4-5"><span class="n">1.4.5</span>Roles in Testing</a></li></ul></li><li class="toc-sec"><a href="#h1-5"><span class="n">1.5</span>Essential Skills and Good Practices in Testing</a><ul class="toc-sub"><li><a href="#h1-5-1"><span class="n">1.5.1</span>Generic Skills Required for Testing</a></li><li><a href="#h1-5-2"><span class="n">1.5.2</span>Whole Team Approach</a></li><li><a href="#h1-5-3"><span class="n">1.5.3</span>Independence of Testing</a></li></ul></li></ul>
       </div>
     </div>
-    <div class="toc-chapter" data-ch="ch2" style="--card-accent-light:#4035C8; --card-accent-dark:#AFB0FF;">
+    <div class="toc-chapter" data-ch="ch2" style="--card-accent-light:#1D3E6E; --card-accent-dark:#9FB8E8;">
       <div class="toc-ch-row">
         <a class="toc-ch-link" href="#ch2">
           <span class="toc-ch-label">2. Testing Throughout the Software Development Lifecycle</span>
@@ -841,7 +942,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       <ul class="toc" aria-label="Contents of Chapter 3"><li class="toc-sec"><a href="#h3-1"><span class="n">3.1</span>Static Testing Basics</a><ul class="toc-sub"><li><a href="#h3-1-1"><span class="n">3.1.1</span>Work Products Examinable by Static Testing</a></li><li><a href="#h3-1-2"><span class="n">3.1.2</span>Value of Static Testing</a></li><li><a href="#h3-1-3"><span class="n">3.1.3</span>Differences between Static Testing and Dynamic Testing</a></li></ul></li><li class="toc-sec"><a href="#h3-2"><span class="n">3.2</span>Feedback and Review Process</a><ul class="toc-sub"><li><a href="#h3-2-1"><span class="n">3.2.1</span>Benefits of Early and Frequent Stakeholder Feedback</a></li><li><a href="#h3-2-2"><span class="n">3.2.2</span>Review Process Activities</a></li><li><a href="#h3-2-3"><span class="n">3.2.3</span>Roles and Responsibilities in Reviews</a></li><li><a href="#h3-2-4"><span class="n">3.2.4</span>Review Types</a></li><li><a href="#h3-2-5"><span class="n">3.2.5</span>Success Factors for Reviews</a></li></ul></li></ul>
       </div>
     </div>
-    <div class="toc-chapter" data-ch="ch4" style="--card-accent-light:#6B4600; --card-accent-dark:#E8B84B;">
+    <div class="toc-chapter" data-ch="ch4" style="--card-accent-light:#0F3A66; --card-accent-dark:#94BDEA;">
       <div class="toc-ch-row">
         <a class="toc-ch-link" href="#ch4">
           <span class="toc-ch-label">4. Test Analysis and Design</span>
@@ -855,7 +956,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       <ul class="toc" aria-label="Contents of Chapter 4"><li class="toc-sec"><a href="#h4-1"><span class="n">4.1</span>Test Techniques Overview</a></li><li class="toc-sec"><a href="#h4-2"><span class="n">4.2</span>Black-Box Test Techniques</a><ul class="toc-sub"><li><a href="#h4-2-1"><span class="n">4.2.1</span>Equivalence Partitioning (EP)</a></li><li><a href="#h4-2-2"><span class="n">4.2.2</span>Boundary Value Analysis (BVA)</a></li><li><a href="#h4-2-3"><span class="n">4.2.3</span>Decision Table Testing</a></li><li><a href="#h4-2-4"><span class="n">4.2.4</span>State Transition Testing</a></li></ul></li><li class="toc-sec"><a href="#h4-3"><span class="n">4.3</span>White-Box Test Techniques</a><ul class="toc-sub"><li><a href="#h4-3-1"><span class="n">4.3.1</span>Statement Testing and Statement Coverage</a></li><li><a href="#h4-3-2"><span class="n">4.3.2</span>Branch Testing and Branch Coverage</a></li><li><a href="#h4-3-3"><span class="n">4.3.3</span>The Value of White-box Testing</a></li></ul></li><li class="toc-sec"><a href="#h4-4"><span class="n">4.4</span>Experience-based Test Techniques</a></li><li class="toc-sec"><a href="#h4-5"><span class="n">4.5</span>Collaboration-based Test Approaches</a><ul class="toc-sub"><li><a href="#h4-5-1"><span class="n">4.5.1</span>Collaborative User Story Writing</a></li><li><a href="#h4-5-2"><span class="n">4.5.2</span>Acceptance Criteria</a></li><li><a href="#h4-5-3"><span class="n">4.5.3</span>Acceptance Test-driven Development (ATDD)</a></li></ul></li></ul>
       </div>
     </div>
-    <div class="toc-chapter" data-ch="ch5" style="--card-accent-light:#86324E; --card-accent-dark:#EA9FBA;">
+    <div class="toc-chapter" data-ch="ch5" style="--card-accent-light:#16406B; --card-accent-dark:#B0D0F0;">
       <div class="toc-ch-row">
         <a class="toc-ch-link" href="#ch5">
           <span class="toc-ch-label">5. Managing the Test Activities</span>
@@ -884,7 +985,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       </div>
     </div>
     <div class="toc-section-divider"><span>Advanced Level &middot; Test Analyst (CTAL-TA)</span></div>
-<div class="toc-chapter" data-ch="ta1" style="--card-accent-light:#961B31; --card-accent-dark:#F19EAC;">
+<div class="toc-chapter" data-ch="ta1" style="--card-accent-light:#0B3D91; --card-accent-dark:#A9C6EE;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ta1">
       <span class="toc-ch-label">1. The Tasks of the Test Analyst in the Test Process</span>
@@ -919,7 +1020,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ta2" style="--card-accent-light:#5F38A2; --card-accent-dark:#C6AEEE;">
+<div class="toc-chapter" data-ch="ta2" style="--card-accent-light:#234F7D; --card-accent-dark:#93BEE8;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ta2">
       <span class="toc-ch-label">2. The Tasks of the Test Analyst in Risk-Based Testing</span>
@@ -947,7 +1048,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ta3" style="--card-accent-light:#265926; --card-accent-dark:#9FD79F;">
+<div class="toc-chapter" data-ch="ta3" style="--card-accent-light:#28527A; --card-accent-dark:#8FB7D5;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ta3">
       <span class="toc-ch-label">3. Test Analysis and Test Design</span>
@@ -995,7 +1096,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ta4" style="--card-accent-light:#7E390E; --card-accent-dark:#F2B37E;">
+<div class="toc-chapter" data-ch="ta4" style="--card-accent-light:#103F6B; --card-accent-dark:#8FC0E8;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ta4">
       <span class="toc-ch-label">4. Testing Quality Characteristics</span>
@@ -1064,7 +1165,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </div>
 </div>
     <div class="toc-section-divider"><span>Performance Testing (CT-PT)</span></div>
-<div class="toc-chapter" data-ch="pt1" style="--card-accent-light:#8A3B00; --card-accent-dark:#F2A65E;">
+<div class="toc-chapter" data-ch="pt1" style="--card-accent-light:#1E4569; --card-accent-dark:#A2C6EA;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#pt1"><span class="toc-ch-label">1. Basic Concepts</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-pt1-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 1</span></button>
@@ -1082,7 +1183,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <ul class="toc" aria-label="Contents of Chapter 2"><li class="toc-sec"><a href="#pt2-1"><span class="n">2.1</span>Typical Metrics Collected in Performance Testing</a><ul class="toc-sub"><li><a href="#pt2-1-1"><span class="n">2.1.1</span>Why Performance Metrics are Needed</a></li><li><a href="#pt2-1-2"><span class="n">2.1.2</span>Collecting Performance Measurements and Metrics</a></li><li><a href="#pt2-1-3"><span class="n">2.1.3</span>Selecting Performance Metrics</a></li></ul></li><li class="toc-sec"><a href="#pt2-2"><span class="n">2.2</span>Aggregating Results from Performance Testing</a></li><li class="toc-sec"><a href="#pt2-3"><span class="n">2.3</span>Key Sources of Performance Metrics</a></li><li class="toc-sec"><a href="#pt2-4"><span class="n">2.4</span>Typical Results of a Performance Test</a></li></ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="pt3" style="--card-accent-light:#4A6741; --card-accent-dark:#A8CC9A;">
+<div class="toc-chapter" data-ch="pt3" style="--card-accent-light:#3478C9; --card-accent-dark:#8CC2F0;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#pt3"><span class="toc-ch-label">3. Performance Testing in the Software Lifecycle</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-pt3-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 3</span></button>
@@ -1091,7 +1192,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <ul class="toc" aria-label="Contents of Chapter 3"><li class="toc-sec"><a href="#pt3-1"><span class="n">3.1</span>Principal Performance Testing Activities</a></li><li class="toc-sec"><a href="#pt3-2"><span class="n">3.2</span>Categories of Performance Risks for Different Architectures</a></li><li class="toc-sec"><a href="#pt3-3"><span class="n">3.3</span>Performance Risks Across the Software Development Lifecycle</a></li><li class="toc-sec"><a href="#pt3-4"><span class="n">3.4</span>Performance Testing Activities</a></li></ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="pt4" style="--card-accent-light:#7A1F4B; --card-accent-dark:#E8A0C4;">
+<div class="toc-chapter" data-ch="pt4" style="--card-accent-light:#123A5E; --card-accent-dark:#A6C8ED;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#pt4"><span class="toc-ch-label">4. Performance Testing Tasks</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-pt4-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 4</span></button>
@@ -1110,7 +1211,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </div>
 </div>
     <div class="toc-section-divider"><span>Testing with Generative AI (CT-GenAI)</span></div>
-<div class="toc-chapter" data-ch="ga1" style="--card-accent-light:#4B2E83; --card-accent-dark:#C9A6F0;">
+<div class="toc-chapter" data-ch="ga1" style="--card-accent-light:#2C4870; --card-accent-dark:#A7C6EA;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ga1"><span class="toc-ch-label">1. Introduction to Generative AI for Software Testing</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-ga1-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 1</span></button>
@@ -1119,7 +1220,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <ul class="toc" aria-label="Contents of Chapter 1"><li class="toc-sec"><a href="#ga1-1"><span class="n">1.1</span>Generative AI Foundations and Key Concepts</a><ul class="toc-sub"><li><a href="#ga1-1-1"><span class="n">1.1.1</span>AI Spectrum</a></li><li><a href="#ga1-1-2"><span class="n">1.1.2</span>Basics of Generative AI and LLMs</a></li><li><a href="#ga1-1-3"><span class="n">1.1.3</span>Foundation, Instruction-Tuned and Reasoning LLMs</a></li><li><a href="#ga1-1-4"><span class="n">1.1.4</span>Multimodal LLMs and Vision-Language Models</a></li></ul></li><li class="toc-sec"><a href="#ga1-2"><span class="n">1.2</span>Leveraging Generative AI in Software Testing: Core Principles</a><ul class="toc-sub"><li><a href="#ga1-2-1"><span class="n">1.2.1</span>Key LLM Capabilities for Test Tasks</a></li><li><a href="#ga1-2-2"><span class="n">1.2.2</span>AI Chatbots and LLM-Powered Testing Applications</a></li></ul></li></ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ga2" style="--card-accent-light:#0E5C63; --card-accent-dark:#7FD8CB;">
+<div class="toc-chapter" data-ch="ga2" style="--card-accent-light:#1E5A8C; --card-accent-dark:#A0CCF0;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ga2"><span class="toc-ch-label">2. Prompt Engineering for Effective Software Testing</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-ga2-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 2</span></button>
@@ -1128,7 +1229,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <ul class="toc" aria-label="Contents of Chapter 2"><li class="toc-sec"><a href="#ga2-1"><span class="n">2.1</span>Effective Prompt Development</a><ul class="toc-sub"><li><a href="#ga2-1-1"><span class="n">2.1.1</span>Structure of Prompts</a></li><li><a href="#ga2-1-2"><span class="n">2.1.2</span>Core Prompting Techniques</a></li><li><a href="#ga2-1-3"><span class="n">2.1.3</span>System Prompt and User Prompt</a></li></ul></li><li class="toc-sec"><a href="#ga2-2"><span class="n">2.2</span>Applying Prompt Engineering to Software Test Tasks</a><ul class="toc-sub"><li><a href="#ga2-2-1"><span class="n">2.2.1</span>Test Analysis with Generative AI</a></li><li><a href="#ga2-2-2"><span class="n">2.2.2</span>Test Design and Test Implementation</a></li><li><a href="#ga2-2-3"><span class="n">2.2.3</span>Automated Regression Testing</a></li><li><a href="#ga2-2-4"><span class="n">2.2.4</span>Test Monitoring and Test Control</a></li><li><a href="#ga2-2-5"><span class="n">2.2.5</span>Choosing Prompting Techniques</a></li></ul></li><li class="toc-sec"><a href="#ga2-3"><span class="n">2.3</span>Evaluate Results and Refine Prompts</a><ul class="toc-sub"><li><a href="#ga2-3-1"><span class="n">2.3.1</span>Metrics for Evaluating Results</a></li><li><a href="#ga2-3-2"><span class="n">2.3.2</span>Evaluating and Refining Prompts</a></li></ul></li></ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ga3" style="--card-accent-light:#8B1E1E; --card-accent-dark:#F0A0A0;">
+<div class="toc-chapter" data-ch="ga3" style="--card-accent-light:#123E63; --card-accent-dark:#6EA8DE;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ga3"><span class="toc-ch-label">3. Managing Risks of Generative AI in Software Testing</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-ga3-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 3</span></button>
@@ -1146,7 +1247,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <ul class="toc" aria-label="Contents of Chapter 4"><li class="toc-sec"><a href="#ga4-1"><span class="n">4.1</span>Architectural Approaches for LLM-Powered Test Infrastructure</a><ul class="toc-sub"><li><a href="#ga4-1-1"><span class="n">4.1.1</span>Key Architectural Components and Concepts</a></li><li><a href="#ga4-1-2"><span class="n">4.1.2</span>Retrieval-Augmented Generation</a></li><li><a href="#ga4-1-3"><span class="n">4.1.3</span>LLM-Powered Agents</a></li></ul></li><li class="toc-sec"><a href="#ga4-2"><span class="n">4.2</span>Fine-Tuning and LLMOps</a><ul class="toc-sub"><li><a href="#ga4-2-1"><span class="n">4.2.1</span>Fine-Tuning LLMs for Test Tasks</a></li><li><a href="#ga4-2-2"><span class="n">4.2.2</span>LLMOps</a></li></ul></li></ul>
   </div>
 </div>
-<div class="toc-chapter" data-ch="ga5" style="--card-accent-light:#6B5B14; --card-accent-dark:#E8D48A;">
+<div class="toc-chapter" data-ch="ga5" style="--card-accent-light:#1A4A75; --card-accent-dark:#9BC5EC;">
   <div class="toc-ch-row">
     <a class="toc-ch-link" href="#ga5"><span class="toc-ch-label">5. Deploying and Integrating Generative AI in Test Organizations</span></a>
     <button class="toc-ch-toggle" type="button" aria-expanded="false" aria-controls="toc-ga5-body"><span class="toc-ch-caret" aria-hidden="true">&rsaquo;</span><span class="sr-only">Toggle sections of Chapter 5</span></button>
@@ -1173,7 +1274,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 
   <section aria-label="Choose a syllabus">
     <ul class="synchoice-list">
-      <li class="synchoice" style="--card-accent-light:#0C584F; --card-accent-dark:#5FC9BB;">
+      <li class="synchoice" style="--card-accent-light:#14508A; --card-accent-dark:#8CC2F0;">
         <a href="#ctfl">
           <span class="synchoice-body">
             <span class="synchoice-title">CTFL &mdash; Foundation Level</span>
@@ -1182,7 +1283,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </li>
-      <li class="synchoice" style="--card-accent-light:#961B31; --card-accent-dark:#F19EAC;">
+      <li class="synchoice" style="--card-accent-light:#0B3D91; --card-accent-dark:#A9C6EE;">
         <a href="#cta">
           <span class="synchoice-body">
             <span class="synchoice-title">CTAL-TA &mdash; Advanced Level, Test Analyst</span>
@@ -1190,7 +1291,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           </span>
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
-      <li class="synchoice" style="--card-accent-light:#8A3B00; --card-accent-dark:#F2A65E;">
+      <li class="synchoice" style="--card-accent-light:#1E4569; --card-accent-dark:#A2C6EA;">
         <a href="#ctpt">
           <span class="synchoice-body">
             <span class="synchoice-title">CT-PT &mdash; Performance Testing</span>
@@ -1199,7 +1300,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </li>
-      <li class="synchoice" style="--card-accent-light:#4B2E83; --card-accent-dark:#C9A6F0;">
+      <li class="synchoice" style="--card-accent-light:#2C4870; --card-accent-dark:#A7C6EA;">
         <a href="#ctgenai">
           <span class="synchoice-body">
             <span class="synchoice-title">CT-GenAI &mdash; Testing with Generative AI</span>
@@ -1224,7 +1325,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 </header>
 <main id="main-ctfl" tabindex="-1">
   <section class="hero" style="border-bottom:none;">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr; All syllabi</a></p>
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr;&nbsp;All syllabi</a></p>
     <h1>CTFL &mdash; Foundation Level</h1>
     <p class="lede">A concise summary of the official syllabus, in six chapters. Each one opens a self-contained page with the key definitions, worked diagrams and a one-screen recap.</p>
     <div class="stats" role="group" aria-label="Syllabus totals">
@@ -1237,7 +1338,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <section aria-label="Chapters">
     <ul class="hublist">
 
-      <li class="hubitem" style="--card-accent-light:#0C584F; --card-accent-dark:#5FC9BB;" data-ch="ch1">
+      <li class="hubitem" style="--card-accent-light:#14508A; --card-accent-dark:#8CC2F0;" data-ch="ch1">
         <span class="hub-num" aria-hidden="true">1</span>
         <span>
           <h2 id="ht-1"><a href="#ch1">Fundamentals of Testing</a></h2>
@@ -1245,7 +1346,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 1"><li class="toc-sec"><a href="#h1-1"><span class="n">1.1</span>What is Testing?</a><ul class="toc-sub"><li><a href="#h1-1-1"><span class="n">1.1.1</span>Test Objectives</a></li><li><a href="#h1-1-2"><span class="n">1.1.2</span>Testing and Debugging</a></li></ul></li><li class="toc-sec"><a href="#h1-2"><span class="n">1.2</span>Why is Testing Necessary?</a><ul class="toc-sub"><li><a href="#h1-2-1"><span class="n">1.2.1</span>Testing&rsquo;s Contributions to Success</a></li><li><a href="#h1-2-2"><span class="n">1.2.2</span>Testing and Quality Assurance (QA)</a></li><li><a href="#h1-2-3"><span class="n">1.2.3</span>Errors, Defects, Failures, and Root Causes</a></li></ul></li><li class="toc-sec"><a href="#h1-3"><span class="n">1.3</span>Testing Principles</a></li><li class="toc-sec"><a href="#h1-4"><span class="n">1.4</span>Test Activities, Testware and Test Roles</a><ul class="toc-sub"><li><a href="#h1-4-1"><span class="n">1.4.1</span>Test Activities and Tasks</a></li><li><a href="#h1-4-2"><span class="n">1.4.2</span>Test Process in Context</a></li><li><a href="#h1-4-3"><span class="n">1.4.3</span>Testware</a></li><li><a href="#h1-4-4"><span class="n">1.4.4</span>Traceability between the Test Basis and Testware</a></li><li><a href="#h1-4-5"><span class="n">1.4.5</span>Roles in Testing</a></li></ul></li><li class="toc-sec"><a href="#h1-5"><span class="n">1.5</span>Essential Skills and Good Practices in Testing</a><ul class="toc-sub"><li><a href="#h1-5-1"><span class="n">1.5.1</span>Generic Skills Required for Testing</a></li><li><a href="#h1-5-2"><span class="n">1.5.2</span>Whole Team Approach</a></li><li><a href="#h1-5-3"><span class="n">1.5.3</span>Independence of Testing</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#4035C8; --card-accent-dark:#AFB0FF;" data-ch="ch2">
+      <li class="hubitem" style="--card-accent-light:#1D3E6E; --card-accent-dark:#9FB8E8;" data-ch="ch2">
         <span class="hub-num" aria-hidden="true">2</span>
         <span>
           <h2 id="ht-2"><a href="#ch2">Testing Throughout the Software Development Lifecycle</a></h2>
@@ -1261,7 +1362,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 3"><li class="toc-sec"><a href="#h3-1"><span class="n">3.1</span>Static Testing Basics</a><ul class="toc-sub"><li><a href="#h3-1-1"><span class="n">3.1.1</span>Work Products Examinable by Static Testing</a></li><li><a href="#h3-1-2"><span class="n">3.1.2</span>Value of Static Testing</a></li><li><a href="#h3-1-3"><span class="n">3.1.3</span>Differences between Static Testing and Dynamic Testing</a></li></ul></li><li class="toc-sec"><a href="#h3-2"><span class="n">3.2</span>Feedback and Review Process</a><ul class="toc-sub"><li><a href="#h3-2-1"><span class="n">3.2.1</span>Benefits of Early and Frequent Stakeholder Feedback</a></li><li><a href="#h3-2-2"><span class="n">3.2.2</span>Review Process Activities</a></li><li><a href="#h3-2-3"><span class="n">3.2.3</span>Roles and Responsibilities in Reviews</a></li><li><a href="#h3-2-4"><span class="n">3.2.4</span>Review Types</a></li><li><a href="#h3-2-5"><span class="n">3.2.5</span>Success Factors for Reviews</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#6B4600; --card-accent-dark:#E8B84B;" data-ch="ch4">
+      <li class="hubitem" style="--card-accent-light:#0F3A66; --card-accent-dark:#94BDEA;" data-ch="ch4">
         <span class="hub-num" aria-hidden="true">4</span>
         <span>
           <h2 id="ht-4"><a href="#ch4">Test Analysis and Design</a></h2>
@@ -1269,7 +1370,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 4"><li class="toc-sec"><a href="#h4-1"><span class="n">4.1</span>Test Techniques Overview</a></li><li class="toc-sec"><a href="#h4-2"><span class="n">4.2</span>Black-Box Test Techniques</a><ul class="toc-sub"><li><a href="#h4-2-1"><span class="n">4.2.1</span>Equivalence Partitioning (EP)</a></li><li><a href="#h4-2-2"><span class="n">4.2.2</span>Boundary Value Analysis (BVA)</a></li><li><a href="#h4-2-3"><span class="n">4.2.3</span>Decision Table Testing</a></li><li><a href="#h4-2-4"><span class="n">4.2.4</span>State Transition Testing</a></li></ul></li><li class="toc-sec"><a href="#h4-3"><span class="n">4.3</span>White-Box Test Techniques</a><ul class="toc-sub"><li><a href="#h4-3-1"><span class="n">4.3.1</span>Statement Testing and Statement Coverage</a></li><li><a href="#h4-3-2"><span class="n">4.3.2</span>Branch Testing and Branch Coverage</a></li><li><a href="#h4-3-3"><span class="n">4.3.3</span>The Value of White-box Testing</a></li></ul></li><li class="toc-sec"><a href="#h4-4"><span class="n">4.4</span>Experience-based Test Techniques</a></li><li class="toc-sec"><a href="#h4-5"><span class="n">4.5</span>Collaboration-based Test Approaches</a><ul class="toc-sub"><li><a href="#h4-5-1"><span class="n">4.5.1</span>Collaborative User Story Writing</a></li><li><a href="#h4-5-2"><span class="n">4.5.2</span>Acceptance Criteria</a></li><li><a href="#h4-5-3"><span class="n">4.5.3</span>Acceptance Test-driven Development (ATDD)</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#86324E; --card-accent-dark:#EA9FBA;" data-ch="ch5">
+      <li class="hubitem" style="--card-accent-light:#16406B; --card-accent-dark:#B0D0F0;" data-ch="ch5">
         <span class="hub-num" aria-hidden="true">5</span>
         <span>
           <h2 id="ht-5"><a href="#ch5">Managing the Test Activities</a></h2>
@@ -1289,7 +1390,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#">&larr; All syllabi</a>
+  <a href="#">&larr;&nbsp;All syllabi</a>
   <span class="step"></span>
   <span class="step"></span>
 </footer>
@@ -1302,7 +1403,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 </header>
 <main id="main-cta" tabindex="-1">
   <section class="hero" style="border-bottom:none;">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr; All syllabi</a></p>
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr;&nbsp;All syllabi</a></p>
     <h1>CTAL-TA &mdash; Advanced Level, Test Analyst</h1>
     <p class="lede">A concise summary of the official syllabus, in five chapters. Each one opens a self-contained page with the key definitions, worked diagrams and a one-screen recap.</p>
     <div class="stats" role="group" aria-label="Syllabus totals">
@@ -1314,7 +1415,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 
   <section aria-label="Chapters">
     <ul class="hublist">
-<li class="hubitem" style="--card-accent-light:#961B31; --card-accent-dark:#F19EAC;" data-ch="ta1">
+<li class="hubitem" style="--card-accent-light:#0B3D91; --card-accent-dark:#A9C6EE;" data-ch="ta1">
   <span class="hub-num" aria-hidden="true">1</span>
   <span>
     <h2 id="ht-ta1"><a href="#ta1">The Tasks of the Test Analyst in the Test Process</a></h2>
@@ -1343,7 +1444,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     </ul>
   </span>
 </li>
-<li class="hubitem" style="--card-accent-light:#5F38A2; --card-accent-dark:#C6AEEE;" data-ch="ta2">
+<li class="hubitem" style="--card-accent-light:#234F7D; --card-accent-dark:#93BEE8;" data-ch="ta2">
   <span class="hub-num" aria-hidden="true">2</span>
   <span>
     <h2 id="ht-ta2"><a href="#ta2">The Tasks of the Test Analyst in Risk-Based Testing</a></h2>
@@ -1365,7 +1466,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     </ul>
   </span>
 </li>
-<li class="hubitem" style="--card-accent-light:#265926; --card-accent-dark:#9FD79F;" data-ch="ta3">
+<li class="hubitem" style="--card-accent-light:#28527A; --card-accent-dark:#8FB7D5;" data-ch="ta3">
   <span class="hub-num" aria-hidden="true">3</span>
   <span>
     <h2 id="ht-ta3"><a href="#ta3">Test Analysis and Test Design</a></h2>
@@ -1407,7 +1508,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     </ul>
   </span>
 </li>
-<li class="hubitem" style="--card-accent-light:#7E390E; --card-accent-dark:#F2B37E;" data-ch="ta4">
+<li class="hubitem" style="--card-accent-light:#103F6B; --card-accent-dark:#8FC0E8;" data-ch="ta4">
   <span class="hub-num" aria-hidden="true">4</span>
   <span>
     <h2 id="ht-ta4"><a href="#ta4">Testing Quality Characteristics</a></h2>
@@ -1467,7 +1568,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#">&larr; All syllabi</a>
+  <a href="#">&larr;&nbsp;All syllabi</a>
   <span class="step"></span>
   <span class="step"></span>
 </footer>
@@ -1702,9 +1803,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ctfl">← CTFL chapters</a>
+  <a href="#ctfl">← CTFL chapters</a>
   <span class="step">Chapter 1 of 6</span>
-  <a href="#ch2">Testing Throughout the SDLC →</a>
+  <a href="#ch2">Testing Throughout the SDLC →</a>
 </footer>
 
 </div>
@@ -1877,9 +1978,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ch1">← Fundamentals of Testing</a>
+  <a href="#ch1">← Fundamentals of Testing</a>
   <span class="step">Chapter 2 of 6</span>
-  <a href="#ch3">Static Testing →</a>
+  <a href="#ch3">Static Testing →</a>
 </footer>
 
 </div>
@@ -2013,9 +2114,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ch2">← Testing Throughout the SDLC</a>
+  <a href="#ch2">← Testing Throughout the SDLC</a>
   <span class="step">Chapter 3 of 6</span>
-  <a href="#ch4">Test Analysis and Design →</a>
+  <a href="#ch4">Test Analysis and Design →</a>
 </footer>
 
 </div>
@@ -2288,9 +2389,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ch3">← Static Testing</a>
+  <a href="#ch3">← Static Testing</a>
   <span class="step">Chapter 4 of 6</span>
-  <a href="#ch5">Managing the Test Activities →</a>
+  <a href="#ch5">Managing the Test Activities →</a>
 </footer>
 
 </div>
@@ -2525,9 +2626,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ch4">← Test Analysis and Design</a>
+  <a href="#ch4">← Test Analysis and Design</a>
   <span class="step">Chapter 5 of 6</span>
-  <a href="#ch6">Test Tools →</a>
+  <a href="#ch6">Test Tools →</a>
 </footer>
 
 </div>
@@ -2597,7 +2698,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ch5">← Managing the Test Activities</a>
+  <a href="#ch5">← Managing the Test Activities</a>
   <span class="step">Chapter 6 of 6</span>
   <span class="step"></span>
 </footer>
@@ -2852,9 +2953,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#cta">← CTAL-TA chapters</a>
+  <a href="#cta">← CTAL-TA chapters</a>
   <span class="step">Chapter 1 of 5 · CTAL-TA</span>
-  <a href="#ta2">The Tasks of the Test Analyst in Risk-Based Testing →</a>
+  <a href="#ta2">The Tasks of the Test Analyst in Risk-Based Testing →</a>
 </footer>
 </div>
 <div class="view" id="view-ta2" hidden>
@@ -2978,9 +3079,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ta1">← The Tasks of the Test Analyst in the Test Process</a>
+  <a href="#ta1">← The Tasks of the Test Analyst in the Test Process</a>
   <span class="step">Chapter 2 of 5 · CTAL-TA</span>
-  <a href="#ta3">Test Analysis and Test Design →</a>
+  <a href="#ta3">Test Analysis and Test Design →</a>
 </footer>
 </div>
 <div class="view" id="view-ta3" hidden>
@@ -3301,9 +3402,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ta2">← The Tasks of the Test Analyst in Risk-Based Testing</a>
+  <a href="#ta2">← The Tasks of the Test Analyst in Risk-Based Testing</a>
   <span class="step">Chapter 3 of 5 · CTAL-TA</span>
-  <a href="#ta4">Testing Quality Characteristics →</a>
+  <a href="#ta4">Testing Quality Characteristics →</a>
 </footer>
 </div>
 <div class="view" id="view-ta4" hidden>
@@ -3471,9 +3572,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ta3">← Test Analysis and Test Design</a>
+  <a href="#ta3">← Test Analysis and Test Design</a>
   <span class="step">Chapter 4 of 5 · CTAL-TA</span>
-  <a href="#ta5">Software Defect Prevention →</a>
+  <a href="#ta5">Software Defect Prevention →</a>
 </footer>
 </div>
 <div class="view" id="view-ta5" hidden>
@@ -3643,7 +3744,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ta4">← Testing Quality Characteristics</a>
+  <a href="#ta4">← Testing Quality Characteristics</a>
   <span class="step">Chapter 5 of 5 · CTAL-TA</span>
   <span class="step"></span>
 </footer>
@@ -3656,7 +3757,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 </header>
 <main id="main-ctpt" tabindex="-1">
   <section class="hero" style="border-bottom:none;">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr; All syllabi</a></p>
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr;&nbsp;All syllabi</a></p>
     <h1>CT-PT &mdash; Performance Testing</h1>
     <p class="lede">The Foundation Level Specialist syllabus for performance testing, in five chapters. Covers the concepts, metrics, lifecycle placement, hands-on tasks and tools behind testing how a system behaves under load.</p>
     <div class="stats" role="group" aria-label="Syllabus totals">
@@ -3669,7 +3770,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <section aria-label="Chapters">
     <ul class="hublist">
 
-      <li class="hubitem" style="--card-accent-light:#8A3B00; --card-accent-dark:#F2A65E;" data-ch="pt1">
+      <li class="hubitem" style="--card-accent-light:#1E4569; --card-accent-dark:#A2C6EA;" data-ch="pt1">
         <span class="hub-num" aria-hidden="true">1</span>
         <span>
           <h2 id="hpt-1"><a href="#pt1">Basic Concepts</a></h2>
@@ -3685,7 +3786,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 2"><li class="toc-sec"><a href="#pt2-1"><span class="n">2.1</span>Typical Metrics Collected in Performance Testing</a><ul class="toc-sub"><li><a href="#pt2-1-1"><span class="n">2.1.1</span>Why Performance Metrics are Needed</a></li><li><a href="#pt2-1-2"><span class="n">2.1.2</span>Collecting Performance Measurements and Metrics</a></li><li><a href="#pt2-1-3"><span class="n">2.1.3</span>Selecting Performance Metrics</a></li></ul></li><li class="toc-sec"><a href="#pt2-2"><span class="n">2.2</span>Aggregating Results from Performance Testing</a></li><li class="toc-sec"><a href="#pt2-3"><span class="n">2.3</span>Key Sources of Performance Metrics</a></li><li class="toc-sec"><a href="#pt2-4"><span class="n">2.4</span>Typical Results of a Performance Test</a></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#4A6741; --card-accent-dark:#A8CC9A;" data-ch="pt3">
+      <li class="hubitem" style="--card-accent-light:#3478C9; --card-accent-dark:#8CC2F0;" data-ch="pt3">
         <span class="hub-num" aria-hidden="true">3</span>
         <span>
           <h2 id="hpt-3"><a href="#pt3">Performance Testing in the Software Lifecycle</a></h2>
@@ -3693,7 +3794,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 3"><li class="toc-sec"><a href="#pt3-1"><span class="n">3.1</span>Principal Performance Testing Activities</a></li><li class="toc-sec"><a href="#pt3-2"><span class="n">3.2</span>Categories of Performance Risks for Different Architectures</a></li><li class="toc-sec"><a href="#pt3-3"><span class="n">3.3</span>Performance Risks Across the Software Development Lifecycle</a></li><li class="toc-sec"><a href="#pt3-4"><span class="n">3.4</span>Performance Testing Activities</a></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#7A1F4B; --card-accent-dark:#E8A0C4;" data-ch="pt4">
+      <li class="hubitem" style="--card-accent-light:#123A5E; --card-accent-dark:#A6C8ED;" data-ch="pt4">
         <span class="hub-num" aria-hidden="true">4</span>
         <span>
           <h2 id="hpt-4"><a href="#pt4">Performance Testing Tasks</a></h2>
@@ -3713,7 +3814,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#">&larr; All syllabi</a>
+  <a href="#">&larr;&nbsp;All syllabi</a>
   <span class="step"></span>
   <span class="step"></span>
 </footer>
@@ -3845,9 +3946,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ctpt">&larr; CT-PT chapters</a>
+  <a href="#ctpt">&larr;&nbsp;CT-PT chapters</a>
   <span class="step">Chapter 1 of 5 &middot; CT-PT</span>
-  <a href="#pt2">Performance Measurement Fundamentals &rarr;</a>
+  <a href="#pt2">Performance Measurement Fundamentals&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -3940,9 +4041,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#pt1">&larr; Basic Concepts</a>
+  <a href="#pt1">&larr;&nbsp;Basic Concepts</a>
   <span class="step">Chapter 2 of 5 &middot; CT-PT</span>
-  <a href="#pt3">Performance Testing in the Software Lifecycle &rarr;</a>
+  <a href="#pt3">Performance Testing in the Software Lifecycle&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4054,9 +4155,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#pt2">&larr; Performance Measurement Fundamentals</a>
+  <a href="#pt2">&larr;&nbsp;Performance Measurement Fundamentals</a>
   <span class="step">Chapter 3 of 5 &middot; CT-PT</span>
-  <a href="#pt4">Performance Testing Tasks &rarr;</a>
+  <a href="#pt4">Performance Testing Tasks&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4214,9 +4315,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#pt3">&larr; Performance Testing in the Software Lifecycle</a>
+  <a href="#pt3">&larr;&nbsp;Performance Testing in the Software Lifecycle</a>
   <span class="step">Chapter 4 of 5 &middot; CT-PT</span>
-  <a href="#pt5">Tools &rarr;</a>
+  <a href="#pt5">Tools&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4270,7 +4371,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#pt4">&larr; Performance Testing Tasks</a>
+  <a href="#pt4">&larr;&nbsp;Performance Testing Tasks</a>
   <span class="step">Chapter 5 of 5 &middot; CT-PT</span>
   <span class="step"></span>
 </footer>
@@ -4284,7 +4385,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 </header>
 <main id="main-ctgenai" tabindex="-1">
   <section class="hero" style="border-bottom:none;">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr; All syllabi</a></p>
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><a href="#" style="color:inherit;text-decoration:none;">&larr;&nbsp;All syllabi</a></p>
     <h1>CT-GenAI &mdash; Testing with Generative AI</h1>
     <p class="lede">The Specialist Level syllabus on using generative AI and LLMs in software testing, in five chapters. Covers GenAI foundations, prompt engineering for test tasks, managing GenAI-specific risk, LLM-powered test infrastructure, and rolling GenAI out across a test organization.</p>
     <div class="stats" role="group" aria-label="Syllabus totals">
@@ -4297,7 +4398,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   <section aria-label="Chapters">
     <ul class="hublist">
 
-      <li class="hubitem" style="--card-accent-light:#4B2E83; --card-accent-dark:#C9A6F0;" data-ch="ga1">
+      <li class="hubitem" style="--card-accent-light:#2C4870; --card-accent-dark:#A7C6EA;" data-ch="ga1">
         <span class="hub-num" aria-hidden="true">1</span>
         <span>
           <h2 id="hga-1"><a href="#ga1">Introduction to Generative AI for Software Testing</a></h2>
@@ -4305,7 +4406,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 1"><li class="toc-sec"><a href="#ga1-1"><span class="n">1.1</span>Generative AI Foundations and Key Concepts</a><ul class="toc-sub"><li><a href="#ga1-1-1"><span class="n">1.1.1</span>AI Spectrum</a></li><li><a href="#ga1-1-2"><span class="n">1.1.2</span>Basics of Generative AI and LLMs</a></li><li><a href="#ga1-1-3"><span class="n">1.1.3</span>Foundation, Instruction-Tuned and Reasoning LLMs</a></li><li><a href="#ga1-1-4"><span class="n">1.1.4</span>Multimodal LLMs and Vision-Language Models</a></li></ul></li><li class="toc-sec"><a href="#ga1-2"><span class="n">1.2</span>Leveraging Generative AI in Software Testing: Core Principles</a><ul class="toc-sub"><li><a href="#ga1-2-1"><span class="n">1.2.1</span>Key LLM Capabilities for Test Tasks</a></li><li><a href="#ga1-2-2"><span class="n">1.2.2</span>AI Chatbots and LLM-Powered Testing Applications</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#0E5C63; --card-accent-dark:#7FD8CB;" data-ch="ga2">
+      <li class="hubitem" style="--card-accent-light:#1E5A8C; --card-accent-dark:#A0CCF0;" data-ch="ga2">
         <span class="hub-num" aria-hidden="true">2</span>
         <span>
           <h2 id="hga-2"><a href="#ga2">Prompt Engineering for Effective Software Testing</a></h2>
@@ -4313,7 +4414,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 2"><li class="toc-sec"><a href="#ga2-1"><span class="n">2.1</span>Effective Prompt Development</a><ul class="toc-sub"><li><a href="#ga2-1-1"><span class="n">2.1.1</span>Structure of Prompts</a></li><li><a href="#ga2-1-2"><span class="n">2.1.2</span>Core Prompting Techniques</a></li><li><a href="#ga2-1-3"><span class="n">2.1.3</span>System Prompt and User Prompt</a></li></ul></li><li class="toc-sec"><a href="#ga2-2"><span class="n">2.2</span>Applying Prompt Engineering to Software Test Tasks</a><ul class="toc-sub"><li><a href="#ga2-2-1"><span class="n">2.2.1</span>Test Analysis with Generative AI</a></li><li><a href="#ga2-2-2"><span class="n">2.2.2</span>Test Design and Test Implementation</a></li><li><a href="#ga2-2-3"><span class="n">2.2.3</span>Automated Regression Testing</a></li><li><a href="#ga2-2-4"><span class="n">2.2.4</span>Test Monitoring and Test Control</a></li><li><a href="#ga2-2-5"><span class="n">2.2.5</span>Choosing Prompting Techniques</a></li></ul></li><li class="toc-sec"><a href="#ga2-3"><span class="n">2.3</span>Evaluate Results and Refine Prompts</a><ul class="toc-sub"><li><a href="#ga2-3-1"><span class="n">2.3.1</span>Metrics for Evaluating Results</a></li><li><a href="#ga2-3-2"><span class="n">2.3.2</span>Evaluating and Refining Prompts</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#8B1E1E; --card-accent-dark:#F0A0A0;" data-ch="ga3">
+      <li class="hubitem" style="--card-accent-light:#123E63; --card-accent-dark:#6EA8DE;" data-ch="ga3">
         <span class="hub-num" aria-hidden="true">3</span>
         <span>
           <h2 id="hga-3"><a href="#ga3">Managing Risks of Generative AI in Software Testing</a></h2>
@@ -4329,7 +4430,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <ul class="toc" aria-label="Contents of Chapter 4"><li class="toc-sec"><a href="#ga4-1"><span class="n">4.1</span>Architectural Approaches for LLM-Powered Test Infrastructure</a><ul class="toc-sub"><li><a href="#ga4-1-1"><span class="n">4.1.1</span>Key Architectural Components and Concepts</a></li><li><a href="#ga4-1-2"><span class="n">4.1.2</span>Retrieval-Augmented Generation</a></li><li><a href="#ga4-1-3"><span class="n">4.1.3</span>LLM-Powered Agents</a></li></ul></li><li class="toc-sec"><a href="#ga4-2"><span class="n">4.2</span>Fine-Tuning and LLMOps</a><ul class="toc-sub"><li><a href="#ga4-2-1"><span class="n">4.2.1</span>Fine-Tuning LLMs for Test Tasks</a></li><li><a href="#ga4-2-2"><span class="n">4.2.2</span>LLMOps</a></li></ul></li></ul>
         </span>
       </li>
-      <li class="hubitem" style="--card-accent-light:#6B5B14; --card-accent-dark:#E8D48A;" data-ch="ga5">
+      <li class="hubitem" style="--card-accent-light:#1A4A75; --card-accent-dark:#9BC5EC;" data-ch="ga5">
         <span class="hub-num" aria-hidden="true">5</span>
         <span>
           <h2 id="hga-5"><a href="#ga5">Deploying and Integrating Generative AI in Test Organizations</a></h2>
@@ -4341,7 +4442,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#">&larr; All syllabi</a>
+  <a href="#">&larr;&nbsp;All syllabi</a>
   <span class="step"></span>
   <span class="step"></span>
 </footer>
@@ -4438,9 +4539,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ctgenai">&larr; CT-GenAI chapters</a>
+  <a href="#ctgenai">&larr;&nbsp;CT-GenAI chapters</a>
   <span class="step">Chapter 1 of 5 &middot; CT-GenAI</span>
-  <a href="#ga2">Prompt Engineering for Effective Software Testing &rarr;</a>
+  <a href="#ga2">Prompt Engineering for Effective Software Testing&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4594,9 +4695,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ga1">&larr; Introduction to Generative AI for Software Testing</a>
+  <a href="#ga1">&larr;&nbsp;Introduction to Generative AI for Software Testing</a>
   <span class="step">Chapter 2 of 5 &middot; CT-GenAI</span>
-  <a href="#ga3">Managing Risks of Generative AI in Software Testing &rarr;</a>
+  <a href="#ga3">Managing Risks of Generative AI in Software Testing&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4733,9 +4834,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ga2">&larr; Prompt Engineering for Effective Software Testing</a>
+  <a href="#ga2">&larr;&nbsp;Prompt Engineering for Effective Software Testing</a>
   <span class="step">Chapter 3 of 5 &middot; CT-GenAI</span>
-  <a href="#ga4">LLM-Powered Test Infrastructure for Software Testing &rarr;</a>
+  <a href="#ga4">LLM-Powered Test Infrastructure for Software Testing&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4822,9 +4923,9 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ga3">&larr; Managing Risks of Generative AI in Software Testing</a>
+  <a href="#ga3">&larr;&nbsp;Managing Risks of Generative AI in Software Testing</a>
   <span class="step">Chapter 4 of 5 &middot; CT-GenAI</span>
-  <a href="#ga5">Deploying and Integrating Generative AI in Test Organizations &rarr;</a>
+  <a href="#ga5">Deploying and Integrating Generative AI in Test Organizations&nbsp;&rarr;</a>
 </footer>
 </div>
 
@@ -4908,7 +5009,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   </section>
 </main>
 <footer class="pagefoot">
-  <a href="#ga4">&larr; LLM-Powered Test Infrastructure for Software Testing</a>
+  <a href="#ga4">&larr;&nbsp;LLM-Powered Test Infrastructure for Software Testing</a>
   <span class="step">Chapter 5 of 5 &middot; CT-GenAI</span>
   <span class="step"></span>
 </footer>
