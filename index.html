@@ -509,8 +509,8 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-muted); margin-right: 0.45rem;
 }
 
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 2rem 0 0; }
-.stats .stat { background: var(--surface); padding: 1.25rem 1.4rem; }
+.stats { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 2rem 0 0; }
+.stats .stat { background: var(--surface); padding: 1.25rem 1.4rem; flex: 1 1 150px; }
 .stats .stat .val { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 700; color: var(--accent); }
 .stats .stat .lbl { font-family: var(--font-label); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-top: 0.2rem; }
 
@@ -576,11 +576,8 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   outline: none;
 }
 .kw-pop {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  margin-bottom: 9px;
-  transform: translateX(-50%) translateY(4px);
+  position: fixed;
+  transform: translateY(4px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -623,7 +620,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: var(--arrow-left, 50%);
   transform: translateX(-50%);
   width: 0;
   height: 0;
@@ -637,7 +634,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
   .kw-pop { transition: none; }
@@ -668,10 +665,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   outline: none;
 }
 .k-pop {
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  margin-bottom: 9px;
+  position: fixed;
   transform: translateY(4px);
   opacity: 0;
   visibility: hidden;
@@ -700,7 +694,8 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
   content: "";
   position: absolute;
   top: 100%;
-  left: 14px;
+  left: var(--arrow-left, 14px);
+  transform: translateX(-50%);
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -6224,6 +6219,23 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 <script>
 (function () {
   var openLi = null;
+  var SEL = '.keywords li.kw-chip, .pill.k-pill';
+  var POP_SEL = '.kw-pop, .k-pop';
+
+  function place(li) {
+    var pop = li.querySelector(POP_SEL);
+    if (!pop) return;
+    var r = li.getBoundingClientRect();
+    var margin = 8;
+    var popW = pop.offsetWidth || 220;
+    var left = r.left + r.width / 2 - popW / 2;
+    if (left < margin) left = margin;
+    if (left + popW > window.innerWidth - margin) left = window.innerWidth - margin - popW;
+    pop.style.left = left + 'px';
+    pop.style.top = (r.bottom + 9) + 'px';
+    pop.style.setProperty('--arrow-left', (r.left + r.width / 2 - left) + 'px');
+  }
+
   function closeOpen() {
     if (openLi) {
       openLi.classList.remove('tt-open');
@@ -6235,25 +6247,40 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     if (openLi === li) { closeOpen(); }
     else {
       closeOpen();
+      place(li);
       li.classList.add('tt-open');
       if (li.hasAttribute('aria-expanded')) li.setAttribute('aria-expanded', 'true');
       openLi = li;
     }
   }
   document.addEventListener('click', function (e) {
-    var li = e.target.closest ? e.target.closest('.keywords li.kw-chip, .pill.k-pill') : null;
+    var li = e.target.closest ? e.target.closest(SEL) : null;
     if (li) { toggle(li); } else { closeOpen(); }
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { closeOpen(); return; }
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
-      var li = e.target.closest ? e.target.closest('.keywords li.kw-chip, .pill.k-pill') : null;
+      var li = e.target.closest ? e.target.closest(SEL) : null;
       if (li && e.target === li) {
         e.preventDefault();
         toggle(li);
       }
     }
   });
+  Array.prototype.slice.call(document.querySelectorAll(SEL)).forEach(function (li) {
+    li.addEventListener('mouseenter', function () { place(li); });
+    li.addEventListener('focusin', function () { place(li); });
+  });
+  window.addEventListener('resize', function () {
+    Array.prototype.slice.call(document.querySelectorAll(SEL)).forEach(function (li) {
+      if (li.matches(':hover') || li.classList.contains('tt-open') || document.activeElement === li) place(li);
+    });
+  });
+  window.addEventListener('scroll', function () {
+    Array.prototype.slice.call(document.querySelectorAll(SEL)).forEach(function (li) {
+      if (li.matches(':hover') || li.classList.contains('tt-open') || document.activeElement === li) place(li);
+    });
+  }, { passive: true });
 })();
 </script>
 
