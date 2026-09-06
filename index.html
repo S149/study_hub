@@ -619,13 +619,13 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 .kw-pop::after {
   content: "";
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: var(--arrow-left, 50%);
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border: 6px solid transparent;
-  border-top-color: var(--line-strong);
+  border-bottom-color: var(--line-strong);
 }
 .keywords li.kw-chip:hover > .kw-pop,
 .keywords li.kw-chip:focus-visible > .kw-pop,
@@ -693,13 +693,13 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 .k-pop::after {
   content: "";
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: var(--arrow-left, 14px);
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border: 6px solid transparent;
-  border-top-color: var(--line-strong);
+  border-bottom-color: var(--line-strong);
 }
 .pill.k-pill::before {
   content: "";
