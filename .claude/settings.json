@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks_check_html.py 2>/dev/null || true",
+            "statusMessage": "Checking index.html tag balance..."
+          }
+        ]
+      }
+    ]
+  }
+}
