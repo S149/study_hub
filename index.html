@@ -430,8 +430,12 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 }
 
 /* ---- syllabus-choice cards (hub landing page) ---- */
-.synchoice-list { list-style: none; margin: 2.5rem 0 3rem; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.synchoice-list { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 @media (max-width: 720px) { .synchoice-list { grid-template-columns: 1fr; } }
+.hub-category { margin-top: 2.75rem; }
+.hub-category:first-child { margin-top: 2.5rem; }
+.hub-category-head h2 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--heading-2); margin: 0; }
+.hub-category-head p { color: var(--ink-muted); font-size: 0.9rem; margin: 0.3rem 0 0; max-width: 60ch; }
 .synchoice {
   --card-accent: var(--card-accent-light);
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
@@ -1221,11 +1225,11 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 <body>
 <div class="shell">
 <a class="skip-link" href="#main-hub" id="skip-link">Skip to main content</a>
-<button class="side-toc-toggle-btn" id="side-toc-toggle" type="button" aria-expanded="false" aria-controls="side-toc">
+<button class="side-toc-toggle-btn" id="side-toc-toggle" type="button" aria-expanded="false" aria-controls="side-toc" hidden>
   <span aria-hidden="true">&#9776;</span> Contents
 </button>
 <div class="side-toc-backdrop" id="side-toc-backdrop" hidden></div>
-<aside class="side-toc" id="side-toc" aria-label="Table of contents">
+<aside class="side-toc" id="side-toc" aria-label="Table of contents" hidden>
   <div class="side-toc-head">
     <a class="side-toc-home" href="#"><span aria-hidden="true">&larr;</span> All syllabi</a>
     <button class="side-toc-close" id="side-toc-close" type="button" aria-label="Close contents menu">&times;</button>
@@ -1713,7 +1717,11 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     <p class="lede">Choose a topic to begin. Each one opens a self-contained learning guide with key definitions, worked diagrams, practical examples, and a one-screen recap per chapter.</p>
   </section>
 
-  <section aria-label="Choose a syllabus">
+  <section class="hub-category" aria-labelledby="hub-cat-foundation">
+    <div class="hub-category-head">
+      <h2 id="hub-cat-foundation">Foundation</h2>
+      <p>Start here &mdash; the core syllabus every other module builds on.</p>
+    </div>
     <ul class="synchoice-list">
       <li class="synchoice" style="--card-accent-light:#14508A; --card-accent-dark:#8CC2F0;">
         <a href="#ctfl">
@@ -1724,6 +1732,15 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </li>
+    </ul>
+  </section>
+
+  <section class="hub-category" aria-labelledby="hub-cat-core-advanced">
+    <div class="hub-category-head">
+      <h2 id="hub-cat-core-advanced">Core Advanced</h2>
+      <p>The two Advanced Level core modules, for test analysts and test managers.</p>
+    </div>
+    <ul class="synchoice-list">
       <li class="synchoice" style="--card-accent-light:#0B3D91; --card-accent-dark:#A9C6EE;">
         <a href="#cta">
           <span class="synchoice-body">
@@ -1732,6 +1749,25 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           </span>
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
+      </li>
+      <li class="synchoice" style="--card-accent-light:#2A6094; --card-accent-dark:#96C4EC;">
+        <a href="#ctm">
+          <span class="synchoice-body">
+            <span class="synchoice-title">CTAL-TM &mdash; Advanced Level, Test Manager</span>
+            <span class="synchoice-desc">The Advanced Level specialization for test leads and managers: managing test activities, metrics, estimation, defect management, team skills and stakeholder relationships. 3 chapters.</span>
+          </span>
+          <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="hub-category" aria-labelledby="hub-cat-specialist">
+    <div class="hub-category-head">
+      <h2 id="hub-cat-specialist">Testing Specialist</h2>
+      <p>Focused specialist syllabi for performance, generative AI, and security testing.</p>
+    </div>
+    <ul class="synchoice-list">
       <li class="synchoice" style="--card-accent-light:#1E4569; --card-accent-dark:#A2C6EA;">
         <a href="#ctpt">
           <span class="synchoice-body">
@@ -1759,15 +1795,15 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
           <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </li>
-      <li class="synchoice" style="--card-accent-light:#2A6094; --card-accent-dark:#96C4EC;">
-        <a href="#ctm">
-          <span class="synchoice-body">
-            <span class="synchoice-title">CTAL-TM &mdash; Advanced Level, Test Manager</span>
-            <span class="synchoice-desc">The Advanced Level specialization for test leads and managers: managing test activities, metrics, estimation, defect management, team skills and stakeholder relationships. 3 chapters.</span>
-          </span>
-          <span class="synchoice-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
+    </ul>
+  </section>
+
+  <section class="hub-category" aria-labelledby="hub-cat-additional">
+    <div class="hub-category-head">
+      <h2 id="hub-cat-additional">Additional Materials</h2>
+      <p>Standalone reference tables, not tied to a specific certification.</p>
+    </div>
+    <ul class="synchoice-list">
       <li class="synchoice" style="--card-accent-light:#16406B; --card-accent-dark:#8FC0E8;">
         <a href="#wcag">
           <span class="synchoice-body">
