@@ -18,7 +18,7 @@
 
   /* -- text -- */
   --ink: #17202A;
-  --ink-muted: #4A6580;
+  --ink-muted: #3D5468;
   --ink-important: #123E63;
   --heading-1: #0B1F33;
   --heading-2: #123E63;
@@ -74,7 +74,7 @@
     --hover-bg: #172B3D;
 
     --ink: #E8F0F7;
-    --ink-muted: #A9BDCE;
+    --ink-muted: #92AABD;
     --ink-important: #B9D4EA;
     --heading-1: #F1F6FA;
     --heading-2: #B9D4EA;
@@ -115,7 +115,7 @@
   --hover-bg: #172B3D;
 
   --ink: #E8F0F7;
-  --ink-muted: #A9BDCE;
+  --ink-muted: #92AABD;
   --ink-important: #B9D4EA;
   --heading-1: #F1F6FA;
   --heading-2: #B9D4EA;
@@ -132,7 +132,7 @@
 
   --sidebar-bg: #081522;
   --sidebar-ink: #FFFFFF;
-  --sidebar-ink-muted: #C7D8E6;
+  --sidebar-ink-muted: #92AABD;
   --sidebar-active-bg: #123E63;
   --sidebar-hover-bg: #102A40;
 
@@ -313,7 +313,7 @@ td.mono, th.mono { font-family: var(--font-mono); font-variant-numeric: tabular-
 }
 .pagefoot a {
   font-weight: 600; text-decoration: none; display: inline-flex; align-items: center;
-  min-height: 44px; padding: 0.3rem 0; box-sizing: border-box;
+  min-height: 44px; min-width: 44px; padding: 0.3rem 0.5rem; box-sizing: border-box;
   scroll-margin-bottom: 4.5rem;
 }
 .pagefoot .step { color: var(--ink-muted); }
@@ -8474,11 +8474,16 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     var r = li.getBoundingClientRect();
     var margin = 8;
     var popW = pop.offsetWidth || 220;
+    var popH = pop.offsetHeight || 100;
     var left = r.left + r.width / 2 - popW / 2;
     if (left < margin) left = margin;
     if (left + popW > window.innerWidth - margin) left = window.innerWidth - margin - popW;
+    var top = r.bottom + 9;
+    if (top + popH > window.innerHeight - margin) {
+      top = r.top - popH - 9;
+    }
     pop.style.left = left + 'px';
-    pop.style.top = (r.bottom + 9) + 'px';
+    pop.style.top = top + 'px';
     pop.style.setProperty('--arrow-left', (r.left + r.width / 2 - left) + 'px');
   }
 
@@ -8926,11 +8931,16 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     var r = trigger.getBoundingClientRect();
     var margin = 8;
     var popW = pop.offsetWidth || 220;
+    var popH = pop.offsetHeight || 100;
     var left = r.left + r.width / 2 - popW / 2;
     if (left < margin) left = margin;
     if (left + popW > window.innerWidth - margin) left = window.innerWidth - margin - popW;
+    var top = r.bottom + 9;
+    if (top + popH > window.innerHeight - margin) {
+      top = r.top - popH - 9;
+    }
     pop.style.left = left + 'px';
-    pop.style.top = (r.bottom + 9) + 'px';
+    pop.style.top = top + 'px';
     pop.style.setProperty('--arrow-left', (r.left + r.width / 2 - left) + 'px');
   }
 
