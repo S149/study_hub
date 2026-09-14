@@ -11720,7 +11720,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       html += '<div class="search-group-label">' + escapeHtml(label) + '</div>';
       groups[label].forEach(function (r) {
         var snippet = r.snippet ? snippetAround(r.snippet, q) : '';
-        html += '<button type="button" class="search-result" data-idx="' + flatIndex + '" role="option">' +
+        html += '<button type="button" class="search-result" data-idx="' + flatIndex + '" data-hash="' + escapeHtml(r.hash) + '" role="option">' +
           '<span class="r-title">' + highlight(r.title, q) + '<span class="r-type">' + TYPE_LABEL[r.type] + '</span></span>' +
           (snippet ? '<span class="r-snippet">' + highlight(snippet, q) + '</span>' : '') +
           '</button>';
@@ -11741,20 +11741,20 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     activeIndex = i;
   }
 
-  function activate(entry) {
-    if (!entry) return;
+  function activate(hash) {
+    if (!hash) return;
     closeSearch();
-    if (location.hash === '#' + entry.hash) {
+    if (location.hash === '#' + hash) {
       window.dispatchEvent(new Event('hashchange'));
     } else {
-      location.hash = '#' + entry.hash;
+      location.hash = '#' + hash;
     }
   }
 
   resultsEl.addEventListener('click', function (e) {
     var btn = e.target.closest('.search-result');
     if (!btn) return;
-    activate(lastResults[Number(btn.getAttribute('data-idx'))]);
+    activate(btn.getAttribute('data-hash'));
   });
 
   function openSearch() {
@@ -11781,8 +11781,11 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeIndex - 1); return; }
     if (e.key === 'Enter') {
       e.preventDefault();
+      var items = resultsEl.querySelectorAll('.search-result');
+      if (!items.length) return;
       var idx = activeIndex >= 0 ? activeIndex : 0;
-      activate(lastResults[idx]);
+      var btn = items[idx];
+      if (btn) activate(btn.getAttribute('data-hash'));
     }
   }
 
