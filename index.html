@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'">
 <title>Study Hub</title>
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyNTYzRUIiLz48dGV4dCB4PSIzMyIgeT0iNDYiIGZvbnQtc2l6ZT0iNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPiYjMTAwMjI7PC90ZXh0Pjwvc3ZnPgo=">
 <style>
@@ -1221,7 +1222,7 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 #view-asvs .asvs-pill.L3 { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
 <div class="shell">
@@ -11644,16 +11645,22 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     return index;
   }
 
-  function escapeHtml(s) {
-    return s.replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-  function highlight(text, q) {
-    var esc = escapeHtml(text);
-    if (!q) return esc;
+  function highlightNodes(text, q) {
+    var frag = document.createDocumentFragment();
+    if (!q) { frag.appendChild(document.createTextNode(text)); return frag; }
     var escQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return esc.replace(new RegExp('(' + escQ + ')', 'ig'), '<mark>$1</mark>');
+    var re = new RegExp('(' + escQ + ')', 'ig');
+    var lastIndex = 0, m;
+    while ((m = re.exec(text))) {
+      if (m.index > lastIndex) frag.appendChild(document.createTextNode(text.slice(lastIndex, m.index)));
+      var mark = document.createElement('mark');
+      mark.textContent = m[0];
+      frag.appendChild(mark);
+      lastIndex = m.index + m[0].length;
+      if (m[0].length === 0) re.lastIndex++;
+    }
+    if (lastIndex < text.length) frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+    return frag;
   }
   function snippetAround(text, q) {
     if (!q) return text.slice(0, 140);
@@ -11699,13 +11706,20 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
 
   function renderResults(results, q) {
     activeIndex = -1;
+    resultsEl.textContent = '';
     if (!q) {
-      resultsEl.innerHTML = '<div class="search-empty">Start typing to search ' +
-        (scope === 'local' && currentRoot ? escapeHtml(syllabusLabel(currentRoot)) : 'all syllabi and reference pages') + '&hellip;</div>';
+      var empty = document.createElement('div');
+      empty.className = 'search-empty';
+      empty.textContent = 'Start typing to search ' +
+        (scope === 'local' && currentRoot ? syllabusLabel(currentRoot) : 'all syllabi and reference pages') + '…';
+      resultsEl.appendChild(empty);
       return;
     }
     if (!results.length) {
-      resultsEl.innerHTML = '<div class="search-empty">No matches for &ldquo;' + escapeHtml(q) + '&rdquo;.</div>';
+      var none = document.createElement('div');
+      none.className = 'search-empty';
+      none.textContent = 'No matches for “' + q + '”.';
+      resultsEl.appendChild(none);
       return;
     }
     var groups = {};
@@ -11714,20 +11728,43 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       if (!groups[r.syllabus]) { groups[r.syllabus] = []; order.push(r.syllabus); }
       groups[r.syllabus].push(r);
     });
-    var html = '';
     var flatIndex = 0;
+    var frag = document.createDocumentFragment();
     order.forEach(function (label) {
-      html += '<div class="search-group-label">' + escapeHtml(label) + '</div>';
+      var groupLabel = document.createElement('div');
+      groupLabel.className = 'search-group-label';
+      groupLabel.textContent = label;
+      frag.appendChild(groupLabel);
       groups[label].forEach(function (r) {
         var snippet = r.snippet ? snippetAround(r.snippet, q) : '';
-        html += '<button type="button" class="search-result" data-idx="' + flatIndex + '" data-hash="' + escapeHtml(r.hash) + '" role="option">' +
-          '<span class="r-title">' + highlight(r.title, q) + '<span class="r-type">' + TYPE_LABEL[r.type] + '</span></span>' +
-          (snippet ? '<span class="r-snippet">' + highlight(snippet, q) + '</span>' : '') +
-          '</button>';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'search-result';
+        btn.dataset.idx = String(flatIndex);
+        btn.dataset.hash = r.hash;
+        btn.setAttribute('role', 'option');
+
+        var titleSpan = document.createElement('span');
+        titleSpan.className = 'r-title';
+        titleSpan.appendChild(highlightNodes(r.title, q));
+        var typeSpan = document.createElement('span');
+        typeSpan.className = 'r-type';
+        typeSpan.textContent = TYPE_LABEL[r.type];
+        titleSpan.appendChild(typeSpan);
+        btn.appendChild(titleSpan);
+
+        if (snippet) {
+          var snippetSpan = document.createElement('span');
+          snippetSpan.className = 'r-snippet';
+          snippetSpan.appendChild(highlightNodes(snippet, q));
+          btn.appendChild(snippetSpan);
+        }
+
+        frag.appendChild(btn);
         flatIndex++;
       });
     });
-    resultsEl.innerHTML = html;
+    resultsEl.appendChild(frag);
   }
 
   function setActive(i) {
