@@ -35,6 +35,8 @@ Match the granularity of the template page for **every** chapter, not just the f
 
 **Keyword tooltip formatting**: when a glossary term has an abbreviation or synonym, put it on its **own** `<span class="kw-line">` with a `<strong>` label — `<span class="kw-line"><strong>Abbreviation:</strong> SUS</span>` / `<span class="kw-line"><strong>Synonyms:</strong> facilitator</span>` — never inline as plain trailing text in the definition sentence. Check the template page's tooltips for the exact wrapping.
 
+**Keyword tooltips contain ONLY the definition plus Abbreviation and/or Synonyms lines.** Do not add any other glossary metadata — no `See also`, `Reference`, `Term type`, or `Version` lines — even when the glossary PDF lists them.
+
 ### 5. Wire it into sidebar navigation (HTML)
 Add the corresponding entry to the sidebar TOC (`#side-toc` / `.side-toc-nav`) so the page is reachable, matching the existing chapter/section nesting pattern (`.toc-section-divider`, `.toc-chapter`, `.toc-ch-row`, `.toc-ch-body`). Also add the syllabus's entry to the hub category list (`.synchoice-list` under the relevant `.hub-category`) and to the hub page's own per-chapter `<ul class="hublist">` listing with the **full** per-chapter subsection TOC (not an abbreviated 1–2-item summary) — this listing uses the exact same ids as the sidebar.
 
