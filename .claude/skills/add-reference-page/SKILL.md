@@ -50,6 +50,7 @@ Adding the HTML is not enough. The page's view-switching, sidebar-visibility, an
 | Sidebar visibility / "am I in a chapter" detection | `function currentChapterNum()` regex `/^view-(ch\d\|ta\d\|pt\d\|...)$/` | Your new chapter prefix added to the alternation |
 | Sidebar syllabus filter (which chapters show when open) | `function syllabusOf(ch)` | A new `if (/^yourprefix\d$/.test(ch)) return 'yourprefix';` branch |
 | Global search result grouping | `var CHAPTER_ROOT = [...]` | A new `[/^yourprefix\d+/, 'yoursyllabusroot']` entry |
+| Syllabus name shown at the top of the sidebar | `var SYLLABUS_ROOT = {...}` (sidebar script) | `yourprefix: 'yoursyllabusroot'` — the name is read from the `<h1>` of `#view-<root>`, so the overview page's `<h1>` must be `CODE &mdash; Name` |
 
 After editing, **re-verify none of these five spots still miss your prefix** — grep each one for your new prefix string and confirm it appears in all five.
 
@@ -60,6 +61,12 @@ Run these checks against `index.html` and fix anything they surface — don't re
 - **Link resolution**: every `href="#xxx"` added in the sidebar/hub-page TOC must have a matching `id="xxx"` somewhere in the new content (chapter-root ids like `#ut1` are the one expected exception — those resolve via the JS router, not a literal element id).
 - **Routing round-trip**: for a handful of representative subsection ids, confirm they appear in `ID_TO_VIEW` mapped to the correct chapter, and that the chapter id appears in `VIEWS`.
 - **Stats card**: the "Learning objectives" number is an exact integer (no `~`), and the K-level range matches every K-level actually used by the syllabus's own LOs — cross-check against your Step 1 extraction, not a copy-pasted range from another page.
+
+### 7b. Learning objectives and K-pills
+Every learning objective gets exactly one `.pill.k-pill` (on the `<h3>` of an `N.M.K` LO, on the `<h2>` when the section has no subsection for it). Do NOT add "Learning objectives" callout boxes — no other syllabus has them. Unnumbered introductions in the source get an unnumbered first section (`tatN-intro` / `hatN-intro`).
+
+### 7c. Diagrams and visual structure
+Add ~1–2 inline SVG diagrams per chapter only where a picture adds something a table does not and every label is in the source. Rules learned the hard way: `viewBox` width exactly 720 (never narrower — text renders larger than elsewhere); text on a filled `fill="var(--accent)"` shape gets `class="on-accent"` (never a `fill` attribute — the CSS rule `.diagram svg text` would override it) and the shape gets no `opacity`; arrows start/end ≥4px outside the boxes they connect; group brackets are open `<path>`s, never empty thin `<rect>`s; `<desc>` states every visible label and the reading order; ids prefixed with the chapter view id. Lists of ≥5 items become cards, a table, a `ul.checklist`, or a flowchain instead of bullets.
 
 ### 8. Run the `check-mobile-a11y` skill
 Do this last, against the new section — this project has a history of shipping pages with mobile layout and tooltip-clipping bugs that get fixed in a follow-up commit. Catch them now instead.
