@@ -4076,13 +4076,47 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
     <h3 id="hta3-2-2">3.2.2 State Transition Testing <span class="pill k-pill" tabindex="0" role="button" aria-expanded="false" aria-describedby="ktip-ta-20">K3<span class="k-pop" id="ktip-ta-20" role="tooltip"><span class="k-line"><strong>K3: Apply</strong></span><span class="k-line">The candidate can carry out a procedure when confronted with a familiar task, or select the correct procedure and apply it to a given context.</span></span></span></h3>
     <p>Many complex systems are <strong>stateful</strong> &mdash; their reaction to an event depends on the system's current state. Embedded systems, dialog-based systems, control systems, and systems managing entity lifecycles are typical examples. A state simplifies internal complexity so stakeholders can more easily understand expected behavior. During test analysis, the TA must ensure a state-based model represents the expected behavior at the level of detail testing needs; if the test basis already has such a model, the TA checks it contains the required test conditions and adapts or replaces it if not.</p>
     <p>In state-based models, nodes represent states and edges represent transitions, which are triggered by events and may carry guard conditions and actions. Variants in use include extended finite state machines, Harel state charts, and UML state machines.</p>
+    <figure class="diagram">
+      <div class="diagram-frame">
+        <svg viewBox="0 0 720 330" role="img" aria-labelledby="ta3-stt-title ta3-stt-desc">
+          <title id="ta3-stt-title">Example state model for an online order, annotated with 0-switch, 1-switch and round-trip sequences</title>
+          <desc id="ta3-stt-desc">Four states in sequence: New, Confirmed, Shipped, Delivered, connected by place order, ship and deliver transitions. New also transitions to Cancelled via cancel. A dashed reorder transition returns from Delivered back to New. New to Confirmed is one 0-switch. New to Confirmed to Shipped is one 1-switch. New to Confirmed to Shipped to Delivered and back to New via reorder is one round trip, since it starts and ends at New with no other state repeated.</desc>
+          <defs>
+            <marker id="arrow-ta3-stt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="accent-fill"></path>
+            </marker>
+          </defs>
+          <circle cx="80" cy="140" r="50" class="surface-fill accent-stroke" stroke-width="2"></circle>
+          <text x="80" y="145" text-anchor="middle" font-weight="700" font-size="13">New</text>
+          <circle cx="270" cy="70" r="50" class="surface-fill accent-stroke" stroke-width="2"></circle>
+          <text x="270" y="75" text-anchor="middle" font-weight="700" font-size="13">Confirmed</text>
+          <circle cx="460" cy="70" r="50" class="surface-fill accent-stroke" stroke-width="2"></circle>
+          <text x="460" y="75" text-anchor="middle" font-weight="700" font-size="13">Shipped</text>
+          <circle cx="650" cy="140" r="50" class="surface-fill accent-stroke" stroke-width="2"></circle>
+          <text x="650" y="145" text-anchor="middle" font-weight="700" font-size="13">Delivered</text>
+          <circle cx="270" cy="225" r="42" class="surface-fill line-stroke" stroke-width="1.75"></circle>
+          <text x="270" y="230" text-anchor="middle" font-weight="700" font-size="13">Cancelled</text>
+          <path d="M118,110 C 160,80 200,68 222,62" fill="none" class="line-stroke" stroke-width="1.75" marker-end="url(#arrow-ta3-stt)"></path>
+          <text x="170" y="60" text-anchor="middle" class="mono muted" font-size="12">place order</text>
+          <path d="M320,70 C 360,70 380,70 408,70" fill="none" class="line-stroke" stroke-width="1.75" marker-end="url(#arrow-ta3-stt)"></path>
+          <text x="365" y="58" text-anchor="middle" class="mono muted" font-size="12">ship</text>
+          <path d="M496,108 C 550,128 590,133 605,135" fill="none" class="line-stroke" stroke-width="1.75" marker-end="url(#arrow-ta3-stt)"></path>
+          <text x="565" y="118" text-anchor="middle" class="mono muted" font-size="12">deliver</text>
+          <path d="M650,190 C 650,305 80,305 80,190" fill="none" class="line-stroke" stroke-width="1.75" stroke-dasharray="5 3" marker-end="url(#arrow-ta3-stt)"></path>
+          <text x="365" y="320" text-anchor="middle" class="mono muted" font-size="12">reorder</text>
+          <path d="M95,187 C 140,205 190,215 222,220" fill="none" class="line-stroke" stroke-width="1.75" marker-end="url(#arrow-ta3-stt)"></path>
+          <text x="145" y="222" text-anchor="middle" class="mono muted" font-size="12">cancel</text>
+        </svg>
+      </div>
+      <figcaption>An invalid transition &mdash; e.g. Shipped directly to Cancelled &mdash; is simply absent from the diagram.</figcaption>
+    </figure>
     <p>Beyond the state transition coverage criteria from Foundation Level, two further criteria have strong empirically-proven defect detection effectiveness:</p>
     <div class="spectrum" role="img" aria-label="N-switch coverage as a scale from 0-switch through 1-switch to 2-switch and higher, showing that practical use concentrates at the low end because the number of N-switches grows exponentially with N">
-      <div class="seg"><span class="lvl">0-switch</span><strong>Single transition</strong><span>Equivalent to valid transitions coverage; a sequence of just 1 transition. Used frequently in practice.</span></div>
-      <div class="seg"><span class="lvl">1-switch</span><strong>Transition pair</strong><span>A pair of incoming and outgoing transitions at one state (2 consecutive transitions). Also used frequently in practice.</span></div>
+      <div class="seg"><span class="lvl">0-switch</span><strong>Single transition</strong><span>Equivalent to valid transitions coverage; a sequence of just 1 transition. Used frequently in practice. <span class="mono">New &rarr; Confirmed</span> above is one 0-switch.</span></div>
+      <div class="seg"><span class="lvl">1-switch</span><strong>Transition pair</strong><span>A pair of incoming and outgoing transitions at one state (2 consecutive transitions). Also used frequently in practice. <span class="mono">New &rarr; Confirmed &rarr; Shipped</span> is one 1-switch.</span></div>
       <div class="seg"><span class="lvl">2-switch and higher</span><strong>Longer sequences</strong><span>N+1 consecutive transitions. Only indicated when there's high risk of failure from unexpected event sequences, since the number of N-switches can grow exponentially with N.</span></div>
     </div>
-    <p><strong>N-switch coverage</strong> applies to valid sequences of N+1 consecutive transitions (an &ldquo;N-switch&rdquo;); extending an N-switch at its end by one more valid transition yields an N+1 switch. <strong>Round-trip coverage</strong> applies to loops in the state-based model &mdash; a round trip is a loop whose start and end states are the same, with no other state in the loop repeated. The coverage items are the round trips themselves, and this criterion has been found highly effective at detecting defects.</p>
+    <p><strong>N-switch coverage</strong> applies to valid sequences of N+1 consecutive transitions (an &ldquo;N-switch&rdquo;); extending an N-switch at its end by one more valid transition yields an N+1 switch. <strong>Round-trip coverage</strong> applies to loops in the state-based model &mdash; a round trip is a loop whose start and end states are the same, with no other state in the loop repeated. The coverage items are the round trips themselves, and this criterion has been found highly effective at detecting defects. <span class="mono">New &rarr; Confirmed &rarr; Shipped &rarr; Delivered &rarr; New</span> (via reorder) above is one round trip.</p>
     <p>State transition testing suits automation via model-based testing tools well. Like most black-box techniques, it contributes to defect prevention by surfacing specification defects during modeling itself. It can be applied at any test level.</p>
 
     <h3 id="hta3-2-3">3.2.3 Scenario-Based Testing <span class="pill k-pill" tabindex="0" role="button" aria-expanded="false" aria-describedby="ktip-ta-21">K3<span class="k-pop" id="ktip-ta-21" role="tooltip"><span class="k-line"><strong>K3: Apply</strong></span><span class="k-line">The candidate can carry out a procedure when confronted with a familiar task, or select the correct procedure and apply it to a given context.</span></span></span></h3>
@@ -10709,6 +10743,43 @@ section.topic .rail h3 { margin: 0 0 0.25rem; font-size: 0.98rem; }
       <div class="card"><h4>CASE statement</h4><p>There may be several possible outcomes.</p></div>
       <div class="card"><h4>LOOP statement</h4><p>One control flow for the true outcome of the loop condition and one for the false outcome.</p></div>
     </div>
+    <figure class="diagram">
+      <div class="diagram-frame">
+        <svg viewBox="0 0 720 260" role="img" aria-labelledby="tt2-cfg-title tt2-cfg-desc">
+          <title id="tt2-cfg-title">Statement coverage reaching 100% without exercising both decision outcomes</title>
+          <desc id="tt2-cfg-desc">Code: if x is less than 0, set x to 0, then compute y as 100 divided by x. Control flow graph: Start leads to the decision "x &lt; 0 ?". The true branch runs "x = 0" then merges; the false branch skips straight to the same merge point, then "y = 100 / x", then End. A single test with x = -1 executes every statement (x = 0 and y = 100 / x) via the true branch alone, reaching 100% statement coverage. Decision coverage additionally requires a second test with x = 5, taking the false branch, to reach 100%.</desc>
+          <defs>
+            <marker id="arrow-tt2-cfg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="line-stroke"></path>
+            </marker>
+          </defs>
+          <rect x="20" y="20" width="190" height="110" rx="8" class="surface-fill line-stroke" stroke-width="1.5"></rect>
+          <text x="35" y="45" font-size="13" class="mono">if (x &lt; 0) {</text>
+          <text x="50" y="68" font-size="13" class="mono">x = 0;</text>
+          <text x="35" y="91" font-size="13" class="mono">}</text>
+          <text x="35" y="114" font-size="13" class="mono">y = 100 / x;</text>
+          <rect x="300" y="10" width="100" height="34" rx="17" class="surface-fill line-stroke" stroke-width="1.5"></rect>
+          <text x="350" y="32" text-anchor="middle" font-size="13">Start</text>
+          <polygon points="350,55 420,100 350,145 280,100" class="surface-fill accent-stroke" stroke-width="2"></polygon>
+          <text x="350" y="96" text-anchor="middle" font-size="12">x &lt; 0 ?</text>
+          <text x="350" y="112" text-anchor="middle" font-size="12" class="mono muted">decision</text>
+          <rect x="490" y="82" width="120" height="36" rx="6" class="surface-fill line-stroke" stroke-width="1.5"></rect>
+          <text x="550" y="104" text-anchor="middle" font-size="12" class="mono">x = 0</text>
+          <rect x="300" y="178" width="100" height="34" rx="6" class="surface-fill line-stroke" stroke-width="1.5"></rect>
+          <text x="350" y="200" text-anchor="middle" font-size="12" class="mono">y = 100/x</text>
+          <rect x="300" y="222" width="100" height="34" rx="17" class="surface-fill line-stroke" stroke-width="1.5"></rect>
+          <text x="350" y="244" text-anchor="middle" font-size="13">End</text>
+          <line x1="350" y1="44" x2="350" y2="51" class="line-stroke" stroke-width="1.5" marker-end="url(#arrow-tt2-cfg)"></line>
+          <path d="M424,97 C 450,90 465,88 486,95" fill="none" class="accent-stroke" stroke-width="2" marker-end="url(#arrow-tt2-cfg)"></path>
+          <text x="455" y="80" text-anchor="middle" font-size="11" class="mono" style="fill:var(--accent)">true</text>
+          <path d="M276,103 C 290,130 330,155 330,176" fill="none" class="accent-stroke" stroke-width="2" marker-end="url(#arrow-tt2-cfg)"></path>
+          <text x="278" y="150" text-anchor="middle" font-size="11" class="mono" style="fill:var(--accent)">false</text>
+          <path d="M550,122 C 550,150 370,150 370,176" fill="none" class="line-stroke" stroke-width="1.5" marker-end="url(#arrow-tt2-cfg)"></path>
+          <line x1="350" y1="212" x2="350" y2="219" class="line-stroke" stroke-width="1.5" marker-end="url(#arrow-tt2-cfg)"></line>
+        </svg>
+      </div>
+      <figcaption>Statement coverage needs only the true branch (x = -1); decision coverage needs the false branch too (x = 5) &mdash; the difference this section's coverage formulas are measuring.</figcaption>
+    </figure>
     <p>Coverage is measured as the number of decision outcomes exercised by the tests divided by the total number of decision outcomes in the test object, normally expressed as a percentage. Note that a single test case may exercise several decision outcomes.</p>
     <p><span class="mono pill">decision coverage = decision outcomes exercised by the tests &divide; total decision outcomes in the test object &times; 100%</span></p>
     <p>Compared to the modified condition/decision and multiple condition techniques described below, decision testing considers the entire decision as a whole and evaluates only the TRUE and FALSE outcomes, regardless of the complexity of its internal structure.</p>
